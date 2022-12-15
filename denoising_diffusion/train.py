@@ -14,29 +14,35 @@ from model.diffusion import Diffusion
 
 
 
-if torch.cuda.is_available():
-    device = "cuda"
-else:
-    device = "cpu"
 
-loader = datasets.get_loader(constants.TRAIN_DIR, batch_size= constants.batch_size)
-
-model = Unet(
-    dim = constants.image_size,
-    channels = constants.channels,
-    dim_mults = constants.dim_mults
-    )
-model.to(device)
-
-optimizer = Adam(model.parameters(), lr = constants.l_rate)
-
-diffusion = Diffusion(timesteps = constants.timesteps, device=device)
-
-if not os.path.exists(constants.RESULTS_DIR):
-    os.makedirs(constants.RESULTS_DIR)
 
 if __name__ == '__main__':
 
+
+    if torch.cuda.is_available():
+        device = "cuda"
+    else:
+        device = "cpu"
+
+    loader = datasets.get_loader(constants.TRAIN_DIR, batch_size= constants.batch_size)
+
+    model = Unet(
+        dim = constants.image_size,
+        channels = constants.channels,
+        dim_mults = constants.dim_mults
+        )
+    model.to(device)
+
+    optimizer = Adam(model.parameters(), lr = constants.l_rate)
+
+    diffusion = Diffusion(timesteps = constants.timesteps, device=device)
+
+    if not os.path.exists(constants.RESULTS_DIR):
+        os.makedirs(constants.RESULTS_DIR)
+
+
+
+    print("Training ......")
     for epoch in range(constants.epochs):
         for step, batch in enumerate(loader):
             optimizer.zero_grad()
