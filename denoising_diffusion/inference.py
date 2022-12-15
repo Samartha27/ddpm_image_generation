@@ -9,8 +9,6 @@ import matplotlib.animation as animation
 samples = sample(model, image_size=image_size, batch_size=64, channels=channels)
 
 
-
-
 # show a random one
 random_index = 5
 plt.imshow(samples[-1][random_index].reshape(image_size, image_size, channels), cmap="gray")
