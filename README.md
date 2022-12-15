@@ -3,9 +3,9 @@
 
 ## Installation
 
-1. Clone the repoistory using `git clone https://github.com/`.
+1. Clone the repoistory - `git clone https://github.com/`.
 2. Change directory to mini_ddmp - `cd mini_ddmp`.
-3. Set up a new virtual environment - `conda env create -f environment.yml` and activate using `conda activate env`.
+3. Set up a new virtual environment - `conda env create -f environment.yml` and activate it - `conda activate env`.
 
 
 
