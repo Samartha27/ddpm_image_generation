@@ -23,7 +23,6 @@ reverse_transform = Compose([
 dataset = load_dataset("fashion_mnist")
 # load dataset from the hub
 
-
 transform = Compose([
             transforms.RandomHorizontalFlip(),
             transforms.ToTensor(),

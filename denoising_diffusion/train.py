@@ -15,6 +15,7 @@ from torchvision.utils import save_image
 from einops import rearrange, reduce, repeat
 from einops.layers.torch import Rearrange
 from utils import constants
+from dataloader import dataloader
 
 
 results_folder = Path("./results")
