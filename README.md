@@ -17,3 +17,5 @@ Even though the training images look like a masked image, they're  3 channel ima
 
 ## Model training and experimentation 
 Each model is trained on a NVIDIA  GTX 1050 Ti  GPU.
+
+
