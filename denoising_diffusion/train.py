@@ -66,8 +66,8 @@ if __name__ == '__main__':
 
                 milestone = step // constants.save_and_sample_every
                 batches = helpers.num_to_groups(4, batch_size)
-                
-                all_images_list = list(map(lambda n: diffusion.sample(model, batch_size=n, channels=constants.channels), batches))
+
+                all_images_list = list(map(lambda n: diffusion.sample(model, batch_size = n, channels = constants.channels), batches))
                 all_images = torch.cat(all_images_list, dim=0)
                 all_images = (all_images + 1) * 0.5
                 save_image(all_images, str(constants.RESULTS_DIR / f'sample-{milestone}.png'), nrow = 6)
