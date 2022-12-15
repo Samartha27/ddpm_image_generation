@@ -39,6 +39,7 @@ Our model is trained on NVIDIA GTX 1050 Ti GPU.
 ## References
 
 [Diffusion Models](https://medium.com/@monadsblog/diffusion-models-4dbe58489a2f)
+
 [Diffusion Models Made Easy](https://towardsdatascience.com/diffusion-models-made-easy-8414298ce4da)
 
 [EINOPS](https://github.com/arogozhnikov/einops)

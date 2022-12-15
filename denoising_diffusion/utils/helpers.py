@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 from torch import nn
-
+from inspect import isfunction
 
 def exists(x):
     return x is not None
