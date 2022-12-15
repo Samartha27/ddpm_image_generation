@@ -27,7 +27,6 @@ results_folder.mkdir(exist_ok = True)
 save_and_sample_every = 1000
 
 
-# batch = next(iter(dataloader))
 timesteps = 200
 batch_size = 128
 image_size = 64
@@ -40,26 +39,22 @@ else:
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
 model = Unet(
-    # dim= constants.image_size,
-    # channels= constants.channels,
-    dim=image_size,
-    channels=channels,
-    dim_mults=(1, 2, 4,)
+
+    dim= constants.image_size,
+    channels= constants.channels,
+    dim_mults=(1, 2, 4, 8,)
 )
 model.to(device)
 
-diffusion = Diffusion(timesteps=timesteps, device=device)
+diffusion = Diffusion(timesteps= constants.timesteps, device=device)
 
 optimizer = Adam(model.parameters(), lr=1e-3)
 
-loader = tiny_image_net.get_loader(DATA_FILEPATH, batch_size=batch_size)
+loader = tiny_image_net.get_loader(DATA_FILEPATH, batch_size= constants.batch_size)
 
 for epoch in range(constants.epochs):
     for step, batch in enumerate(loader):
         optimizer.zero_grad()
-
-        # batch_size = batch["pixel_values"].shape[0]
-        # batch = batch["pixel_values"].to(device)
 
         batch_size = batch.shape[0]
         batch = batch.to(device)
