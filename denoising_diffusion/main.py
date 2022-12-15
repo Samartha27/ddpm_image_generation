@@ -22,7 +22,7 @@ from torch.utils.data import DataLoader
 image_size = 28
 channels = 1
 batch_size = 128
-
+epochs = 5
 
 results_folder = Path("./results")
 results_folder.mkdir(exist_ok = True)
@@ -44,7 +44,7 @@ model.to(device)
 
 optimizer = Adam(model.parameters(), lr=1e-3)
 
-epochs = 5
+
 
 for epoch in range(epochs):
     for step, batch in enumerate(dataloader):
