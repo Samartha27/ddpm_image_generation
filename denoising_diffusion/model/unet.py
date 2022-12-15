@@ -2,12 +2,11 @@ import numpy as np
 import math
 import torch
 from torch import nn, einsum
-import torch.nn.functional as F
 from utils import constants, helpers
 from functools import partial
-from .attention import Attention
+from .attention import Attention, LinearAttention
 from .resnet import ResnetBlock, ConvNextBlock
-
+from utils.helpers import default, exists
 
 class Residual(nn.Module):
     def __init__(self, fn):
@@ -98,7 +97,7 @@ class Unet(nn.Module):
                         block_klass(dim_in, dim_out, time_emb_dim=time_dim),
                         block_klass(dim_out, dim_out, time_emb_dim=time_dim),
                         Residual(PreNorm(dim_out, LinearAttention(dim_out))),
-                        Downsample(dim_out) if not is_last else nn.Identity(),
+                        helpers.Downsample(dim_out) if not is_last else nn.Identity(),
                     ]
                 )
             )
@@ -117,7 +116,7 @@ class Unet(nn.Module):
                         block_klass(dim_out * 2, dim_in, time_emb_dim=time_dim),
                         block_klass(dim_in, dim_in, time_emb_dim=time_dim),
                         Residual(PreNorm(dim_in, LinearAttention(dim_in))),
-                        Upsample(dim_in) if not is_last else nn.Identity(),
+                        helpers.Upsample(dim_in) if not is_last else nn.Identity(),
                     ]
                 )
             )
