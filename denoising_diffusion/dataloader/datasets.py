@@ -22,16 +22,12 @@ dataset = load_dataset("fashion_mnist")
 # load dataset from the hub
 
 
-
-
-# define image transformations (e.g. using torchvision)
 transform = Compose([
             transforms.RandomHorizontalFlip(),
             transforms.ToTensor(),
             transforms.Lambda(lambda t: (t * 2) - 1)
 ])
 
-# define function
 def transforms(examples):
    examples["pixel_values"] = [transform(image.convert("L")) for image in examples["image"]]
    del examples["image"]
@@ -40,7 +36,6 @@ def transforms(examples):
 
 transformed_dataset = dataset.with_transform(transforms).remove_columns("label")
 
-# create dataloader
 
 
 
