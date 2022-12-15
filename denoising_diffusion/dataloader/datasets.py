@@ -3,7 +3,7 @@ import numpy as np
 import torch
 from torch import nn, einsum
 import torch.nn.functional as F
-import datasets
+from torchvision import datasets
 from torchvision import transforms
 from torch.utils.data import DataLoader
 from utils import constants
