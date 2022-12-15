@@ -26,6 +26,7 @@ class PreNorm(nn.Module):
         x = self.norm(x)
         return self.fn(x)
 
+
 class SinusoidalPositionEmbeddings(nn.Module):
     def __init__(self, dim):
         super().__init__()
@@ -39,6 +40,7 @@ class SinusoidalPositionEmbeddings(nn.Module):
         embeddings = time[:, None] * embeddings[None, :]
         embeddings = torch.cat((embeddings.sin(), embeddings.cos()), dim=-1)
         return embeddings
+
 
 class Unet(nn.Module):
     def __init__(
