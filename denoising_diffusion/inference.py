@@ -6,10 +6,10 @@ import matplotlib.animation as animation
 import matplotlib as plt
 
 
-
 image_size = 28
 channels = 1
 batch_size = 128
+timesteps = 200
 
 # sample 64 images
 samples = sample(model, image_size=image_size, batch_size=64, channels=channels)
