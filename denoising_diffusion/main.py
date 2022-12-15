@@ -15,14 +15,9 @@ from torchvision.utils import save_image
 from einops import rearrange, reduce, repeat
 from einops.layers.torch import Rearrange
 from torch.utils.data import DataLoader
+from utils.constants import image_size, batch_size, epochs, channels
 
 
-
-
-image_size = 28
-channels = 1
-batch_size = 128
-epochs = 5
 
 results_folder = Path("./results")
 results_folder.mkdir(exist_ok = True)
