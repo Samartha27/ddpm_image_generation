@@ -2,6 +2,8 @@ import numpy as np
 import torch
 from torch import nn, einsum
 import torch.nn.functional as F
+from einops import rearrange, reduce, repeat
+from einops.layers.torch import Rearrange
 
 class Attention(nn.Module):
     def __init__(self, dim, heads=4, dim_head=32):

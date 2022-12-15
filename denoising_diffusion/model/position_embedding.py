@@ -1,8 +1,7 @@
 import numpy as np
 import math
 import torch
-from torch import nn, einsum
-import torch.nn.functional as F
+from torch import nn
 
 
 class SinusoidalPositionEmbeddings(nn.Module):
