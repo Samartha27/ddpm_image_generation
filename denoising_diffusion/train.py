@@ -14,12 +14,12 @@ from model.diffusion import Diffusion
 
 
 
-if "PYTORCH_DEVICE" in os.environ:
-    device = os.environ["PYTORCH_DEVICE"]
+if torch.cuda.is_available():
+    device = "cuda"
 else:
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cpu"
 
-loader = datasets.get_loader(constants.DATA_FILEPATH, batch_size= constants.batch_size)
+loader = datasets.get_loader(constants.TRAIN_DIR, batch_size= constants.batch_size)
 
 model = Unet(
     dim = constants.image_size,
@@ -28,11 +28,12 @@ model = Unet(
     )
 model.to(device)
 
-optimizer = Adam(model.parameters(), lr=1e-3)
+optimizer = Adam(model.parameters(), lr = constants.l_rate)
 
-diffusion = Diffusion(timesteps= constants.timesteps, device=device)
+diffusion = Diffusion(timesteps = constants.timesteps, device=device)
 
-constants.RESULTS_DIR.mkdir(exist_ok = True)
+if not os.path.exists(constants.RESULTS_DIR):
+    os.makedirs(constants.RESULTS_DIR)
 
 if __name__ == '__main__':
 
@@ -43,7 +44,7 @@ if __name__ == '__main__':
             batch_size = batch.shape[0]
             batch = batch.to(device)
 
-            # Algorithm 1 line 3: sample t uniformally for every example in the batch
+            # Sampling t uniformally for every example in the batch
             t = torch.randint(0, constants.timesteps, (batch_size,), device=device).long()
 
             loss = diffusion.p_losses(model, batch, t, loss_type="huber")
@@ -54,7 +55,7 @@ if __name__ == '__main__':
             loss.backward()
             optimizer.step()
 
-            # save generated images
+            # save  images
             if step != 0 and step % constants.save_and_sample_every == 0:
                 milestone = step // constants.save_and_sample_every
                 batches = helpers.num_to_groups(4, batch_size)

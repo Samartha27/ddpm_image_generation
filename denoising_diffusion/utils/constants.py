@@ -1,9 +1,8 @@
 
 
 
-DATA_FILEPATH = "data/tiny_imagenet/train.h5"
-DATA_FILEPATH = "data/tiny_imagenet/train.h5"
-
+TRAIN_DIR = "data/tiny_imagenet/train.h5"
+#TRAIN_DIR = "data/tiny_imagenet/train.h5"
 RESULTS_DIR = "./results"
 
 
@@ -14,6 +13,6 @@ channels = 3
 epochs = 5
 save_and_sample_every = 1000
 dim_mults = (1, 2, 4, 8,)
-
+l_rate = 1e-3
 
 
