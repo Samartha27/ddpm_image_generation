@@ -3,14 +3,11 @@
 
 ## Installation
 
-1. Clone the repoistory - `git clone https://github.com/Samartha27/mini_ddmp.git`
-2. Change directory to mini_ddmp - `cd mini_ddmp`
-3. Set up a new virtual environment - `conda env create -f environment.yml`
-4. Activate environment - `conda activate env`
-
 ```bash
 $ git clone https://github.com/Samartha27/mini_ddmp.git
 $ cd mini_ddmp
+$ conda env create -f environment.yml
+$ conda activate env
 ```
 
 
