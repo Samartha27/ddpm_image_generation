@@ -1,4 +1,3 @@
-from turtle import forward
 import numpy as np
 from pathlib import Path
 from random import random
@@ -8,6 +7,8 @@ from tqdm.auto import tqdm
 from torch.optim import Adam
 from torchvision.utils import save_image
 from utils import constants, helpers
+
+import os
 
 # from dataloader import dataloader
 from model.unet import Unet
@@ -33,7 +34,10 @@ image_size = 64
 channels = 3
 DATA_FILEPATH = "data/tiny_imagenet/train.h5"
 
-device = "cuda" if torch.cuda.is_available() else "cpu"
+if "PYTORCH_DEVICE" in os.environ:
+    device = os.environ["PYTORCH_DEVICE"]
+else:
+    device = "cuda" if torch.cuda.is_available() else "cpu"
 
 model = Unet(
     # dim= constants.image_size,

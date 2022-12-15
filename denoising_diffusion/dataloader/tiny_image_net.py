@@ -16,10 +16,10 @@ class H5Dataset(torch.utils.data.Dataset):
         self.transform = transform
         self.h5_file = h5py.File(h5_file, 'r')
         self.images = self.h5_file['images'][:]
-        self.labels = torch.LongTensor(self.h5_file['labels'][:])
+        # self.labels = torch.LongTensor(self.h5_file['labels'][:])
         
     def __len__(self):
-        return self.labels.shape[0]
+        return self.images.shape[0]
       
     def __getitem__(self, idx):
         data = self.images[idx]
