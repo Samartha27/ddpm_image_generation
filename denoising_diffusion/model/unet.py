@@ -4,7 +4,9 @@ import torch
 from torch import nn, einsum
 import torch.nn.functional as F
 from utils import constants, helpers
-
+from functools import partial
+from .attention import Attention
+from .resnet import ResnetBlock, ConvNextBlock
 
 
 class Residual(nn.Module):
