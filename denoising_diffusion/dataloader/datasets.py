@@ -44,6 +44,6 @@ reverse_transforms = Compose([
 
 # image size is 64, nchw format
 def get_loader(data_filepath, batch_size=128, shuffle=True):
-    data_train = H5Dataset(data_filepath, transform=transform)
+    data_train = H5Dataset(data_filepath, transform = transform)
     return torch.utils.data.DataLoader(data_train, batch_size=batch_size, shuffle=shuffle)
 

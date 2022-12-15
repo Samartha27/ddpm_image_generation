@@ -1,5 +1,12 @@
+
+
+
 DATA_FILEPATH = "data/tiny_imagenet/train.h5"
+DATA_FILEPATH = "data/tiny_imagenet/train.h5"
+
 RESULTS_DIR = "./results"
+
+
 timesteps = 200
 batch_size = 128
 image_size = 64
