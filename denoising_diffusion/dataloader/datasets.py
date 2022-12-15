@@ -10,14 +10,14 @@ from utils import constants
 
 
 
+def reverse_transform():
 
-reverse_transform = Compose([
+   return Compose([
      Lambda(lambda t: (t + 1) / 2),
      Lambda(lambda t: t.permute(1, 2, 0)), # CHW to HWC
      Lambda(lambda t: t * 255.),
      Lambda(lambda t: t.numpy().astype(np.uint8)),
-     ToPILImage(),
-])
+     ToPILImage()])
 
 
 dataset = load_dataset("fashion_mnist")

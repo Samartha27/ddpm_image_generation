@@ -3,7 +3,7 @@ import torch
 from torch import nn, einsum
 import torch.nn.functional as F
 from utils import constants
-
+from dataloader.datasets import reverse_transform
 
 
 def cosine_beta_schedule(timesteps, s=0.008):
