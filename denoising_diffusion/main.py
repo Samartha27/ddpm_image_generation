@@ -14,9 +14,7 @@ from torch.optim import Adam
 from torchvision.utils import save_image
 from einops import rearrange, reduce, repeat
 from einops.layers.torch import Rearrange
-from torch.utils.data import DataLoader
-from utils.constants import image_size, batch_size, epochs, channels, timesteps
-
+from utils import constants
 
 
 results_folder = Path("./results")
@@ -24,15 +22,14 @@ results_folder.mkdir(exist_ok = True)
 save_and_sample_every = 1000
 
 
-dataloader = DataLoader(transformed_dataset["train"], batch_size=batch_size, shuffle=True)
 
 batch = next(iter(dataloader))
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 model = Unet(
-    dim=image_size,
-    channels=channels,
+    dim= constants.image_size,
+    channels= constants.channels,
     dim_mults=(1, 2, 4,)
 )
 model.to(device)
@@ -40,8 +37,7 @@ model.to(device)
 optimizer = Adam(model.parameters(), lr=1e-3)
 
 
-
-for epoch in range(epochs):
+for epoch in range(constants.epochs):
     for step, batch in enumerate(dataloader):
       optimizer.zero_grad()
 
@@ -49,7 +45,7 @@ for epoch in range(epochs):
       batch = batch["pixel_values"].to(device)
 
       # Algorithm 1 line 3: sample t uniformally for every example in the batch
-      t = torch.randint(0, timesteps, (batch_size,), device=device).long()
+      t = torch.randint(0, constants.timesteps, (batch_size,), device=device).long()
 
       loss = p_losses(model, batch, t, loss_type="huber")
 
@@ -63,7 +59,7 @@ for epoch in range(epochs):
       if step != 0 and step % save_and_sample_every == 0:
         milestone = step // save_and_sample_every
         batches = num_to_groups(4, batch_size)
-        all_images_list = list(map(lambda n: sample(model, batch_size=n, channels=channels), batches))
+        all_images_list = list(map(lambda n: sample(model, batch_size=n, channels= constants.channels), batches))
         all_images = torch.cat(all_images_list, dim=0)
         all_images = (all_images + 1) * 0.5
         save_image(all_images, str(results_folder / f'sample-{milestone}.png'), nrow = 6)
