@@ -1,11 +1,12 @@
-# Mini_DDMP
+# Denoising Diffusion Probabilistic Model with Pytorch
 
 
 ## Installation
 
-1. Clone the repoistory - `git clone https://github.com/`.
-2. Change directory to mini_ddmp - `cd mini_ddmp`.
-3. Set up a new virtual environment - `conda env create -f environment.yml` and activate it - `conda activate env`.
+1. Clone the repoistory - `git clone https://github.com/`
+2. Change directory to mini_ddmp - `cd mini_ddmp`
+3. Set up a new virtual environment - `conda env create -f environment.yml`
+4. Activate environment - `conda activate env`.
 
 
 
