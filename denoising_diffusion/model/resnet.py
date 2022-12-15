@@ -1,3 +1,10 @@
+import torch
+from torch import nn, einsum
+import torch.nn.functional as F
+from einops import rearrange, reduce, repeat
+from utils import constants,helpers
+
+
 class Block(nn.Module):
     def __init__(self, dim, dim_out, groups = 8):
         super().__init__()
@@ -9,7 +16,7 @@ class Block(nn.Module):
         x = self.proj(x)
         x = self.norm(x)
 
-        if exists(scale_shift):
+        if helpers.exists(scale_shift):
             scale, shift = scale_shift
             x = x * (scale + 1) + shift
 
@@ -22,7 +29,7 @@ class ResnetBlock(nn.Module):
         super().__init__()
         self.mlp = (
             nn.Sequential(nn.SiLU(), nn.Linear(time_emb_dim, dim_out))
-            if exists(time_emb_dim)
+            if helpers.exists(time_emb_dim)
             else None
         )
 
@@ -33,7 +40,7 @@ class ResnetBlock(nn.Module):
     def forward(self, x, time_emb=None):
         h = self.block1(x)
 
-        if exists(self.mlp) and exists(time_emb):
+        if helpers.exists(self.mlp) and helpers.exists(time_emb):
             time_emb = self.mlp(time_emb)
             h = rearrange(time_emb, "b c -> b c 1 1") + h
 
@@ -46,7 +53,7 @@ class ConvNextBlock(nn.Module):
         super().__init__()
         self.mlp = (
             nn.Sequential(nn.GELU(), nn.Linear(time_emb_dim, dim))
-            if exists(time_emb_dim)
+            if helpers.exists(time_emb_dim)
             else None
         )
 
@@ -65,8 +72,8 @@ class ConvNextBlock(nn.Module):
     def forward(self, x, time_emb=None):
         h = self.ds_conv(x)
 
-        if exists(self.mlp) and exists(time_emb):
-            assert exists(time_emb), "time embedding must be passed in"
+        if helpers.exists(self.mlp) and helpers.exists(time_emb):
+            assert helpers.exists(time_emb), "time embedding must be passed in"
             condition = self.mlp(time_emb)
             h = h + rearrange(condition, "b c -> b c 1 1")
 
