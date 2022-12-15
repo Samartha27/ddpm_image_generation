@@ -12,6 +12,7 @@ from model.unet import Unet
 from model import forward_diffusion
 
 
+
 results_folder = Path("./results")
 results_folder.mkdir(exist_ok = True)
 save_and_sample_every = 1000
