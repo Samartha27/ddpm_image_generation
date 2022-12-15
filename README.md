@@ -9,7 +9,8 @@
 4. Activate environment - `conda activate env`
 
 ```bash
-$ pip install denoising_diffusion_pytorch
+$ git clone https://github.com/Samartha27/mini_ddmp.git
+$ cd mini_ddmp
 ```
 
 
