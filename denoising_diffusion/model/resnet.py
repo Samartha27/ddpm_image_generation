@@ -22,6 +22,7 @@ class Block(nn.Module):
         x = self.act(x)
         return x
 
+
 class ResnetBlock(nn.Module):
     
     def __init__(self, dim, dim_out, *, time_emb_dim=None, groups=8):
@@ -45,7 +46,8 @@ class ResnetBlock(nn.Module):
 
         h = self.block2(h)
         return h + self.res_conv(x)
-    
+
+  
 class ConvNextBlock(nn.Module):
 
     def __init__(self, dim, dim_out, *, time_emb_dim=None, mult=2, norm=True):
