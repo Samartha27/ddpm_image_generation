@@ -1,3 +1,4 @@
+from turtle import forward
 import numpy as np
 from pathlib import Path
 from random import random
@@ -9,7 +10,7 @@ from torchvision.utils import save_image
 from utils import constants, helpers
 from dataloader import dataloader
 from model.unet import Unet
-from model import forward_diffusion
+from denoising_diffusion.model import forward_diffusion_sampling
 
 
 
@@ -43,7 +44,7 @@ for epoch in range(constants.epochs):
       # Algorithm 1 line 3: sample t uniformally for every example in the batch
       t = torch.randint(0, constants.timesteps, (batch_size,), device=device).long()
 
-      loss = forward_diffusion.p_losses(model, batch, t, loss_type="huber")
+      loss = forward_diffusion_sampling.p_losses(model, batch, t, loss_type="huber")
 
       if step % 100 == 0:
         print("Loss:", loss.item())
@@ -55,7 +56,7 @@ for epoch in range(constants.epochs):
       if step != 0 and step % save_and_sample_every == 0:
         milestone = step // save_and_sample_every
         batches = helpers.num_to_groups(4, batch_size)
-        all_images_list = list(map(lambda n: sample(model, batch_size=n, channels= constants.channels), batches))
+        all_images_list = list(map(lambda n: forward_diffusion_sampling.sample(model, batch_size=n, channels= constants.channels), batches))
         all_images = torch.cat(all_images_list, dim=0)
         all_images = (all_images + 1) * 0.5
         save_image(all_images, str(results_folder / f'sample-{milestone}.png'), nrow = 6)
