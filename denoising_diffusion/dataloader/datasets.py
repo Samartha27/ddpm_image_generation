@@ -7,7 +7,7 @@ import datasets
 from torchvision import transforms
 from torch.utils.data import DataLoader
 from utils import constants
-
+import h5py
 
 
 def reverse_transform():

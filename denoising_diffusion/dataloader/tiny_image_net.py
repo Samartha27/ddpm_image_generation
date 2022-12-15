@@ -7,7 +7,6 @@ import datasets
 from torchvision import transforms
 from torch.utils.data import DataLoader
 from utils import constants
-
 import h5py
 
 # Data loader
@@ -16,18 +15,15 @@ class H5Dataset(torch.utils.data.Dataset):
         self.transform = transform
         self.h5_file = h5py.File(h5_file, 'r')
         self.images = self.h5_file['images'][:]
-        # self.labels = torch.LongTensor(self.h5_file['labels'][:])
         
     def __len__(self):
         return self.images.shape[0]
       
     def __getitem__(self, idx):
         data = self.images[idx]
-        # label = self.labels[idx]
         
         if self.transform:
             data = self.transform(data)
-        # return (data, label)
         return data
 
 transform = Compose([
@@ -44,8 +40,6 @@ reverse_transforms = Compose([
      Lambda(lambda t: t.numpy().astype(np.uint8)),
      ToPILImage(),
 ])
-
-# dataloader = DataLoader(transformed_dataset["train"], batch_size=batch_size, shuffle=True)
 
 
 # image size is 64, nchw format
