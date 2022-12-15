@@ -17,7 +17,6 @@ class Block(nn.Module):
         return x
 
 class ResnetBlock(nn.Module):
-    """https://arxiv.org/abs/1512.03385"""
     
     def __init__(self, dim, dim_out, *, time_emb_dim=None, groups=8):
         super().__init__()
@@ -42,7 +41,6 @@ class ResnetBlock(nn.Module):
         return h + self.res_conv(x)
     
 class ConvNextBlock(nn.Module):
-    """https://arxiv.org/abs/2201.03545"""
 
     def __init__(self, dim, dim_out, *, time_emb_dim=None, mult=2, norm=True):
         super().__init__()
