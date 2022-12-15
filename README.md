@@ -17,9 +17,6 @@
 
 
 
-## Related work
-
-
 
 ## Methodology
 
@@ -34,3 +31,12 @@ Training is with the use of 3 channel images have a size of `32x32`.  The images
 Our model is trained on NVIDIA GTX 1050 Ti GPU.
 
 ## Results
+
+
+
+## References
+
+
+
+
+
