@@ -4,19 +4,14 @@ from torch import nn, einsum
 import torch.nn.functional as F
 import matplotlib.animation as animation
 import matplotlib as plt
-
-
-image_size = 28
-channels = 1
-batch_size = 128
-timesteps = 200
-
-# sample 64 images
-samples = sample(model, image_size=image_size, batch_size=64, channels=channels)
+from utils.constants import image_size, batch_size, epochs, channels, timesteps
 
 
 # show a random one
 random_index = 5
+
+# sample 64 images
+samples = sample(model, image_size=image_size, batch_size=64, channels=channels)
 plt.imshow(samples[-1][random_index].reshape(image_size, image_size, channels), cmap="gray")
 
 

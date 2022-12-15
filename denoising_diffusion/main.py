@@ -15,7 +15,7 @@ from torchvision.utils import save_image
 from einops import rearrange, reduce, repeat
 from einops.layers.torch import Rearrange
 from torch.utils.data import DataLoader
-from utils.constants import image_size, batch_size, epochs, channels
+from utils.constants import image_size, batch_size, epochs, channels, timesteps
 
 
 
