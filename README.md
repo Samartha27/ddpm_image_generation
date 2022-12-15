@@ -1,6 +1,6 @@
 # Denoising Diffusion Probabilistic Model with Pytorch
 
-
+<!---
 ## Installation
 
 ```bash
@@ -9,7 +9,7 @@ $ cd mini_ddmp
 $ conda env create -f environment.yml
 $ conda activate env
 ```
-
+--->
 
 
 ## Abstract
