@@ -11,13 +11,6 @@ def default(val, d):
         return val
     return d() if isfunction(d) else d
 
-class Residual(nn.Module):
-    def __init__(self, fn):
-        super().__init__()
-        self.fn = fn
-
-    def forward(self, x, *args, **kwargs):
-        return self.fn(x, *args, **kwargs) + x
 
 def Upsample(dim):
     return nn.ConvTranspose2d(dim, dim, 4, 2, 1)

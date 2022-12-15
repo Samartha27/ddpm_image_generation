@@ -1,8 +1,19 @@
 import numpy as np
+import math
 import torch
 from torch import nn, einsum
 import torch.nn.functional as F
+from utils import constants, helpers
 
+
+
+class Residual(nn.Module):
+    def __init__(self, fn):
+        super().__init__()
+        self.fn = fn
+
+    def forward(self, x, *args, **kwargs):
+        return self.fn(x, *args, **kwargs) + x
 
 
 class PreNorm(nn.Module):
@@ -47,7 +58,7 @@ class Unet(nn.Module):
         # determine dimensions
         self.channels = channels
 
-        init_dim = default(init_dim, dim // 3 * 2)
+        init_dim = helpers.default(init_dim, dim // 3 * 2)
         self.init_conv = nn.Conv2d(channels, init_dim, 7, padding=3)
 
         dims = [init_dim, *map(lambda m: dim * m, dim_mults)]
