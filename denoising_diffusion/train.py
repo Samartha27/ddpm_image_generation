@@ -27,10 +27,10 @@ if __name__ == '__main__':
     loader = datasets.get_loader(constants.TRAIN_DIR, batch_size= constants.batch_size)
 
     model = Unet(
-        dim = constants.image_size,
-        channels = constants.channels,
-        dim_mults = constants.dim_mults
-        )
+                dim = constants.image_size,
+                channels = constants.channels,
+                dim_mults = constants.dim_mults
+                )
     model.to(device)
 
     optimizer = Adam(model.parameters(), lr = constants.l_rate)
