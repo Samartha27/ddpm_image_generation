@@ -8,6 +8,10 @@
 3. Set up a new virtual environment - `conda env create -f environment.yml`
 4. Activate environment - `conda activate env`
 
+```bash
+$ pip install denoising_diffusion_pytorch
+```
+
 
 
 ## Abstract
