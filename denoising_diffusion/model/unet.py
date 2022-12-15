@@ -10,10 +10,6 @@ from .attention import Attention, LinearAttention
 from .resnet import ResnetBlock, ConvNextBlock
 from utils.helpers import default, exists
 
-from ..utils.helpers import default, Residual, Upsample, Downsample, exists
-from .attention import Attention, LinearAttention
-from .resnet import ResnetBlock, ConvNextBlock
-
 class Residual(nn.Module):
     def __init__(self, fn):
         super().__init__()

@@ -11,9 +11,9 @@ from utils import constants, helpers
 
 # from dataloader import dataloader
 from model.unet import Unet
-from denoising_diffusion.model import forward_diffusion_sampling
+# from denoising_diffusion.model import forward_diffusion_sampling
 
-from dataloader import datasets
+from dataloader import tiny_image_net
 
 
 from model.unet import Unet
@@ -28,32 +28,42 @@ save_and_sample_every = 1000
 
 # batch = next(iter(dataloader))
 timesteps = 200
+batch_size = 128
+image_size = 64
+channels = 3
+DATA_FILEPATH = "data/tiny_imagenet/train.h5"
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 model = Unet(
-    dim= constants.image_size,
-    channels= constants.channels,
+    # dim= constants.image_size,
+    # channels= constants.channels,
+    dim=image_size,
+    channels=channels,
     dim_mults=(1, 2, 4,)
 )
 model.to(device)
 
-diffusion = Diffusion(timesteps=timesteps, deivce=device)
+diffusion = Diffusion(timesteps=timesteps, device=device)
 
 optimizer = Adam(model.parameters(), lr=1e-3)
 
+loader = tiny_image_net.get_loader(DATA_FILEPATH, batch_size=batch_size)
 
 for epoch in range(constants.epochs):
-    for step, batch in enumerate(datasets.dataloader):
+    for step, batch in enumerate(loader):
         optimizer.zero_grad()
 
-        batch_size = batch["pixel_values"].shape[0]
-        batch = batch["pixel_values"].to(device)
+        # batch_size = batch["pixel_values"].shape[0]
+        # batch = batch["pixel_values"].to(device)
+
+        batch_size = batch.shape[0]
+        batch = batch.to(device)
 
         # Algorithm 1 line 3: sample t uniformally for every example in the batch
         t = torch.randint(0, constants.timesteps, (batch_size,), device=device).long()
 
-        loss = forward_diffusion_sampling.diffusion.p_losses(model, batch, t, loss_type="huber")
+        loss = diffusion.p_losses(model, batch, t, loss_type="huber")
 
         if step % 100 == 0:
             print("Loss:", loss.item())

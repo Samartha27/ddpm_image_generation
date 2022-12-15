@@ -3,7 +3,7 @@ import numpy as np
 import torch
 from torch import nn, einsum
 import torch.nn.functional as F
-from datasets import load_dataset
+import datasets
 from torchvision import transforms
 from torch.utils.data import DataLoader
 from utils import constants
@@ -20,7 +20,7 @@ def reverse_transform():
      ToPILImage()])
 
 
-dataset = load_dataset("fashion_mnist")
+dataset = datasets.load_dataset("fashion_mnist")
 # load dataset from the hub
 
 transform = Compose([
@@ -38,7 +38,6 @@ def transforms(examples):
 transformed_dataset = dataset.with_transform(transforms).remove_columns("label")
 
 dataloader = DataLoader(transformed_dataset["train"], batch_size= constants.batch_size, shuffle=True)
-
 
 
 
