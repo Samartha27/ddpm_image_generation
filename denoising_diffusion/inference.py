@@ -4,7 +4,8 @@ from torch import nn, einsum
 import torch.nn.functional as F
 import matplotlib.animation as animation
 import matplotlib as plt
-from utils.constants import image_size, batch_size, epochs, channels, timesteps
+from utils.constants import image_size, batch_size, channels, timesteps
+from model.diffusion import Diffusion
 
 
 # show a random one
