@@ -24,13 +24,14 @@ In the Denoising Diffusion Probabilistic model for image generation, we try to s
 
 ## Methodology
 
-We start with the original image and iteratively add noise in each step. After sufficient number of steps we say that the image is nothing but pure noise.  We use a Normal distribution to sample the noise. We do not employ the same noise at each timestep during the forward process. This can be regulated with the help of the Linear Scheduler which scales the mean and variance inorder to avoid variance explosion as the noise is increases.  The reverese diffusion process involves the neural network trying to learn how to remvove noies step by step.  This way after the model has completed trying, when we feed the model pure noise sampled from the Normal Distribution, it gradually removes the noise in specified timesteps for tractable outcome and prodcues the output image with clarity. 
-The model produces 3 things:
-1. Mean of the noise at each time step. The variance is kept fized in this implementation
+We start with the original image and iteratively add noise in each step. After sufficient number of steps we say that the image is nothing but pure noise.  We use a Normal distribution to sample the noise. We do not employ the same noise at each timestep during the forward process. This can be regulated with the help of the Linear Scheduler which scales the mean and variance inorder to avoid variance explosion as the noise is increases.  The reverse diffusion process involves the neural network trying to learn how to remove noise step by step.  This way after the model has completed trying, when we feed the model pure noise sampled from the Normal Distribution, it gradually removes the noise in specified timesteps for tractable outcome and produces the output image with clarity. 
+The model produces 3 predictions:
+
+1. Mean of the noise at each time step. (variance is kept fixed in this implementation)
 2. Predicting the original image directly (Not practical)
 3. The noise of image directly
 
-The U-net architecture takes the input image and projects the image into samller resolution bottleneck with the help of a Resnet block and Downsample block. After the bottleneck it projects the module back into the original size with the help of Upsample blocks. There are attention blocks employed at certain resolutions along with skip connections etween layers of the same spatial resolutions.The sinusoidal embeddings projected into each of the residual blocks informs the model of which timestep it is running and also helps the model during the reverese-diffusion / denoising process to remove appropriate amounts of noise corresponding to how much noise was added in the forward diffusion at each time step.
+The U-net architecture takes the input image and projects the image into samller resolution bottleneck with the help of a Resnet block and Downsample block. After the bottleneck it projects the module back into the original size with the help of Upsample blocks. There are attention blocks employed at certain resolutions along with skip connections between layers of the same spatial resolutions.The sinusoidal embeddings projected into each of the residual blocks informs the model of which timestep it is running and also helps the model during the reverse-diffusion / denoising process to remove appropriate amounts of noise corresponding to how much noise was added in the forward diffusion at each time step.
 
 
 ## Dataset
