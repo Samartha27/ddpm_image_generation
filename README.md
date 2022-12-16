@@ -30,8 +30,8 @@ We start with the original image and iteratively add noise in each step. After s
 
 
 ## Dataset
-The dataset was downloaded from [Kaggle](https://www.kaggle.com/) 
-Training is with the use of 3 channel images have a size of `64 x 64`.  The images are normalized using mean as ```[0.485, 0.456, 0.406]``` and standard deviation as ```[0.229, 0.224, 0.225]``` 
+
+For training we used the [TinyImageNet](https://courses.cs.washington.edu/courses/cse599g1/19au/files/homework2.tar) dataset with size `64 x 64 x 3`.  The images are normalized using mean as ```[0.485, 0.456, 0.406]``` and standard deviation as ```[0.229, 0.224, 0.225]``` 
 
 
 
