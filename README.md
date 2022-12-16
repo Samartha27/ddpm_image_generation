@@ -14,8 +14,10 @@ $ conda activate env
 
 ## Abstract
 
-In the Denoising Diffusion Probabilistic model for image generation, we try to slowly and systematically corrupt the inherent structure in a data distribution with an iterative forward diffusion process by making use of noise sampling. This is followed by the use of U-net which learns to restore the lost structure in the data distribution during the reverse diffusion process. This  yeilds us a tractable generative model of the data.
+<!-- In the Denoising Diffusion Probabilistic model for image generation, we try to slowly and systematically corrupt the inherent structure in a data distribution with an iterative forward diffusion process by making use of noise sampling. This is followed by the use of U-net which learns to restore the lost structure in the data distribution during the reverse diffusion process. This  yeilds us a tractable generative model of the data. -->
 
+In this project, we explored the internal of the Denoise Diffusion Probablistic Model (DDMP), a simple diffusion-based image generation model. We attempted to implement this model using pytorch. Finally,
+we trained the model on [TinyImageNet][TinyImageNet] and the results are evaluated using [FID].
 
 ## Problem statement
 
@@ -123,4 +125,5 @@ Our model is trained on NVIDIA GTX 1050 Ti GPU.
 
 [TinyImageNet]: https://www.kaggle.com/competitions/tiny-imagenet/overview
 [TinyImageNet_dl]: https://courses.cs.washington.edu/courses/cse599g1/19au/files/homework2.tar
+[FID]: https://en.wikipedia.org/wiki/Fréchet_inception_distance
 
