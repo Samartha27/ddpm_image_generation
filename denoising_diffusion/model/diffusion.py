@@ -4,7 +4,7 @@ from torch import nn, einsum
 import torch.nn.functional as F
 from utils import constants
 import tqdm
-from dataloader.datasets import reverse_tansforms
+from dataloader.datasets import reverse_transform
 
 #Beta Scheduler
 def cosine_beta_schedule(timesteps, s=0.008):
