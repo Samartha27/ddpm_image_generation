@@ -27,7 +27,7 @@ In the Denoising Diffusion Probabilistic model for image generation, we try to s
 We start with the original image and iteratively add noise in each step. After sufficient iterations we say that the final image follows an isotropoic gaussian.  We use a Normal distribution to sample the noise. We do not employ the same noise at each timestep during the forward process. This can be regulated with the help of the Linear Scheduler which scales the mean and variance inorder to avoid variance explosion as the noise is increases.  The reverse diffusion process involves the neural network trying to learn how to remove noise step by step.  This way after the model has completed trying, when we feed the model pure noise sampled from the Normal Distribution, it gradually removes the noise in specified timesteps for tractable outcome and produces the output image with clarity. 
 The model produces 3 predictions:
 
-1. Mean of the noise at each time step. (variance is kept fixed in this implementation)
+1. Mean of the noise at each time step. (Variance is kept fixed in this implementation)
 2. Predicting the original image directly (Not practical)
 3. The noise of image directly
 
