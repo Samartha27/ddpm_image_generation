@@ -67,64 +67,20 @@ p_\theta(x_0) &= \int {p_\theta}(x_{0:T}) dx_{1:T}
 \end{align}$$
 
 $\theta$ are the parameters we train.
-## Loss
-We optimize the ELBO (from Jenson's inequality) on the negative log likelihood.
-\begin{align}
-\mathbb{E}[-\log \textcolor{lightgreen}{p_\theta}(x_0)]
- &\le \mathbb{E}_q [ -\log \frac{\textcolor{lightgreen}{p_\theta}(x_{0:T})}{q(x_{1:T}|x_0)} ] \\
- &=L
-\end{align}
-The loss can be rewritten as  follows.
-\begin{align}
-L
- &= \mathbb{E}_q [ -\log \frac{\textcolor{lightgreen}{p_\theta}(x_{0:T})}{q(x_{1:T}|x_0)} ] \\
- &= \mathbb{E}_q [ -\log p(x_T) - \sum_{t=1}^T \log \frac{\textcolor{lightgreen}{p_\theta}(x_{t-1}|x_t)}{q(x_t|x_{t-1})} ] \\
- &= \mathbb{E}_q [
-  -\log \frac{p(x_T)}{q(x_T|x_0)}
-  -\sum_{t=2}^T \log \frac{\textcolor{lightgreen}{p_\theta}(x_{t-1}|x_t)}{q(x_{t-1}|x_t,x_0)}
-  -\log \textcolor{lightgreen}{p_\theta}(x_0|x_1)] \\
- &= \mathbb{E}_q [
-   D_{KL}(q(x_T|x_0) \Vert p(x_T))
-  +\sum_{t=2}^T D_{KL}(q(x_{t-1}|x_t,x_0) \Vert \textcolor{lightgreen}{p_\theta}(x_{t-1}|x_t))
-  -\log \textcolor{lightgreen}{p_\theta}(x_0|x_1)]
-\end{align}
-$D_{KL}(q(x_T|x_0) \Vert p(x_T))$ is constant since we keep $\beta_1, \dots, \beta_T$ constant.
-### Computing $L_{t-1} = D_{KL}(q(x_{t-1}|x_t,x_0) \Vert \textcolor{lightgreen}{p_\theta}(x_{t-1}|x_t))$
-The forward process posterior conditioned by $x_0$ is,
-\begin{align}
-q(x_{t-1}|x_t, x_0) &= \mathcal{N} \Big(x_{t-1}; \tilde\mu_t(x_t, x_0), \tilde\beta_t \mathbf{I} \Big) \\
-\tilde\mu_t(x_t, x_0) &= \frac{\sqrt{\bar\alpha_{t-1}}\beta_t}{1 - \bar\alpha_t}x_0
-                         + \frac{\sqrt{\alpha_t}(1 - \bar\alpha_{t-1})}{1-\bar\alpha_t}x_t \\
-\tilde\beta_t &= \frac{1 - \bar\alpha_{t-1}}{1 - \bar\alpha_t} \beta_t
-\end{align}
-The paper sets $\textcolor{lightgreen}{\Sigma_\theta}(x_t, t) = \sigma_t^2 \mathbf{I}$ where $\sigma_t^2$ is set to constants
-$\beta_t$ or $\tilde\beta_t$.
-Then,
-$$\textcolor{lightgreen}{p_\theta}(x_{t-1} | x_t) = \mathcal{N}\big(x_{t-1}; \textcolor{lightgreen}{\mu_\theta}(x_t, t), \sigma_t^2 \mathbf{I} \big)$$
-For given noise $\epsilon \sim \mathcal{N}(\mathbf{0}, \mathbf{I})$ using $q(x_t|x_0)$
-\begin{align}
-x_t(x_0, \epsilon) &= \sqrt{\bar\alpha_t} x_0 + \sqrt{1-\bar\alpha_t}\epsilon \\
-x_0 &= \frac{1}{\sqrt{\bar\alpha_t}} \Big(x_t(x_0, \epsilon) -  \sqrt{1-\bar\alpha_t}\epsilon\Big)
-\end{align}
-This gives,
-\begin{align}
-L_{t-1}
- &= D_{KL}(q(x_{t-1}|x_t,x_0) \Vert \textcolor{lightgreen}{p_\theta}(x_{t-1}|x_t)) \\
- &= \mathbb{E}_q \Bigg[ \frac{1}{2\sigma_t^2}
- \Big \Vert \tilde\mu(x_t, x_0) - \textcolor{lightgreen}{\mu_\theta}(x_t, t) \Big \Vert^2 \Bigg] \\
- &= \mathbb{E}_{x_0, \epsilon} \Bigg[ \frac{1}{2\sigma_t^2}
-  \bigg\Vert \frac{1}{\sqrt{\alpha_t}} \Big(
-  x_t(x_0, \epsilon) - \frac{\beta_t}{\sqrt{1 - \bar\alpha_t}} \epsilon
-  \Big) - \textcolor{lightgreen}{\mu_\theta}(x_t(x_0, \epsilon), t) \bigg\Vert^2 \Bigg] \\
-\end{align}
-Re-parameterizing with a model to predict noise
+
+
+
+Predicting noise
+
+$$
 \begin{align}
 \textcolor{lightgreen}{\mu_\theta}(x_t, t) &= \tilde\mu \bigg(x_t,
   \frac{1}{\sqrt{\bar\alpha_t}} \Big(x_t -
    \sqrt{1-\bar\alpha_t}\textcolor{lightgreen}{\epsilon_\theta}(x_t, t) \Big) \bigg) \\
   &= \frac{1}{\sqrt{\alpha_t}} \Big(x_t -
   \frac{\beta_t}{\sqrt{1-\bar\alpha_t}}\textcolor{lightgreen}{\epsilon_\theta}(x_t, t) \Big)
-\end{align}
+\end{align}$$
+
 where $\epsilon_\theta$ is a learned function that predicts $\epsilon$ given $(x_t, t)$.
 This gives,
 \begin{align}
