@@ -63,7 +63,7 @@ if __name__ == '__main__':
             if step != 0 and step % constants.save_and_sample_every == 0:
 
                 milestone = step // constants.save_and_sample_every
-                batches = helpers.num_to_groups(4, batch_size)
+                batches = helpers.num_to_groups(num = 4, divisor= batch_size)
 
                 all_images_list = list(map(lambda n: diffusion.sample(model, batch_size = n, channels = constants.channels), batches))
                 all_images = torch.cat(all_images_list, dim=0)
