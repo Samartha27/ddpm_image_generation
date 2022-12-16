@@ -32,7 +32,8 @@ transform = Compose([
     transforms.Lambda(lambda t: (t * 2) - 1)
 ])
 
-reverse_transforms = Compose([
+def reverse_tansforms(data):
+    return Compose([
      Lambda(lambda t: (t + 1) / 2),
      Lambda(lambda t: t.permute(1, 2, 0)), # CHW to HWC
      Lambda(lambda t: t * 255.),
