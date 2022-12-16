@@ -57,6 +57,7 @@ where $\alpha_t = 1 - \beta_t$ and $\bar\alpha_t = \prod_{s=1}^t \alpha_s$
 ## Reverse Process
 The reverse process removes noise starting at $p(x_T) = \mathcal{N}(x_T; \mathbf{0}, \mathbf{I})$
 for $T$ time steps.
+
 $$
 \begin{align}
 p_\theta(x_{t-1} | x_t) &= \mathcal{N}\big(x_{t-1};
@@ -64,6 +65,7 @@ p_\theta(x_{t-1} | x_t) &= \mathcal{N}\big(x_{t-1};
 p_\theta(x_{0:T}) &=p_\theta(x_T) \prod_{t = 1}^{T} p_\theta(x_{t-1} | x_t) \\
 p_\theta(x_0) &= \int {p_\theta}(x_{0:T}) dx_{1:T}
 \end{align}$$
+
 $\theta$ are the parameters we train.
 ## Loss
 We optimize the ELBO (from Jenson's inequality) on the negative log likelihood.
