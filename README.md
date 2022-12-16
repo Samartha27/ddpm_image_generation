@@ -93,7 +93,11 @@ where, $\epsilon_\theta$ is a learned function that predicts $\epsilon$ given $(
 
 ## Dataset
 
-For training we used the [TinyImageNet](https://courses.cs.washington.edu/courses/cse599g1/19au/files/homework2.tar) dataset with size `64 x 64 x 3`.  The images are normalized using mean as ```[0.485, 0.456, 0.406]``` and standard deviation as ```[0.229, 0.224, 0.225]``` 
+For training we used the [TinyImageNet][TinyImageNet] ([Download][TinyImageNet_dl]) dataset. This dataset consists of 100,000 images with 200 classes of objects (500 image for each class). Each image is has 3 channels (RGB) and has a width and height of 64. They can be represented as a tensor with dimension `(3, 64, 64)` in `CHW` notation.
+
+Samples: TODO
+
+The images are normalized using mean as ```[0.485, 0.456, 0.406]``` and standard deviation as ```[0.229, 0.224, 0.225]``` 
 
 
 
@@ -115,6 +119,8 @@ Our model is trained on NVIDIA GTX 1050 Ti GPU.
 [Diffusion Models Made Easy](https://towardsdatascience.com/diffusion-models-made-easy-8414298ce4da) <br />
 [EINOPS](https://github.com/arogozhnikov/einops)
 
+[TinyImageNet Description][TinyImageNet]
 
-
+[TinyImageNet]: https://www.kaggle.com/competitions/tiny-imagenet/overview
+[TinyImageNet_dl]: https://courses.cs.washington.edu/courses/cse599g1/19au/files/homework2.tar
 
