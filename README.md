@@ -14,7 +14,7 @@ $ conda activate env
 
 ## Abstract
 
-<!-- In the Denoising Diffusion Probabilistic model for image generation, we try to slowly and systematically corrupt the inherent structure in a data distribution with an iterative forward diffusion process by making use of noise sampling. This is followed by the use of U-net which learns to restore the lost structure in the data distribution during the reverse diffusion process. This  yeilds us a tractable generative model of the data. -->
+<!-- In the Denoising Diffusion Probabilistic model for image generation,  -->
 
 In this project, we explored the internal of the [Denoise Diffusion Probablistic Model (DDPM)][DDPM_paper], a simple diffusion-based image generation model. We attempted to implement this model using pytorch. Finally,
 we trained the model on [TinyImageNet][TinyImageNet] and the results are evaluated using [FID].
@@ -33,7 +33,9 @@ To the best of our knowledge, [Denoise Diffusion Probablistic Model (DDPM)][DDPM
 
 ## Methodology
 
-We start with the original image and iteratively add noise in each step. After sufficient iterations we say that the final image follows an isotropoic gaussian.  We use a Normal distribution to sample the noise. We do not employ the same noise at each timestep during the forward process. This can be regulated with the help of the Linear Scheduler which scales the mean and variance inorder to avoid variance explosion as the noise is increases.  The reverse diffusion process involves the neural network trying to learn how to remove noise step by step.  This way after the model has completed trying, when we feed the model pure noise sampled from the Normal Distribution, it gradually removes the noise in specified timesteps for tractable outcome and produces the output image with clarity. 
+In a nutshell, we try to slowly and systematically corrupt the inherent structure in a data distribution with an iterative forward diffusion process by making use of noise sampling. This is followed by the use of U-net which learns to restore the lost structure in the data distribution during the reverse diffusion process. This  yeilds us a tractable generative model of the data.
+
+We start with the original image and iteratively add noise in each step.  We use a Normal distribution to sample the noise. After sufficient iterations, we can say that the final image follows an isotropoic gaussian. We do not employ the same noise at each timestep during the forward process. This can be regulated with the help of the Linear Scheduler which scales the mean and variance inorder to avoid variance explosion as the noise is increases.  The reverse diffusion process involves the neural network trying to learn how to remove noise step by step.  This way after the model has completed trying, when we feed the model pure noise sampled from the Normal Distribution, it gradually removes the noise in specified timesteps for tractable outcome and produces the output image with clarity. 
 The model produces 3 predictions:
 
 1. Mean of the noise at each time step. (Variance is kept fixed in this implementation)
@@ -93,13 +95,6 @@ where, $\epsilon_\theta$ is a learned function that predicts $\epsilon$ given $(
 
 
 
-
-
-
-
-
-
-
 ## Dataset
 
 For training we used the [TinyImageNet][TinyImageNet] ([Download][TinyImageNet_dl]) dataset. This dataset consists of 100,000 images with 200 classes of objects (500 image for each class). Each image is has 3 channels (RGB) and has a width and height of 64. They can be represented as a tensor with dimension `(3, 64, 64)` in `CHW` notation.
@@ -131,7 +126,7 @@ Our model is trained on NVIDIA GTX 1050 Ti GPU.
 [TinyImageNet Description][TinyImageNet]
 
 [TinyImageNet]: https://www.kaggle.com/competitions/tiny-imagenet/overview
-[TinyImageNet_dl]: https://courses.cs.washington.edu/courses/cse599g1/19au/files/homework2.tar
+[TinyImageNet_dl]: wget http://cs231n.stanford.edu/tiny-imagenet-200.zip
 [FID]: https://en.wikipedia.org/wiki/Fréchet_inception_distance
 [DDPM_paper]: https://arxiv.org/abs/2006.11239
 [image-generation-approaches]: https://lilianweng.github.io/posts/2021-07-11-diffusion-models/generative-overview.png
