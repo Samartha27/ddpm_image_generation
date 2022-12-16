@@ -39,14 +39,6 @@ def extract(a, t, x_shape):
     out = a.gather(-1, t)
     return out.reshape(batch_size, *((1,) * (len(x_shape) - 1))).to(t.device)
 
-def get_noisy_image(x_start, t):
-  # add noise
-  x_noisy = Diffusion.q_sample(x_start, t=t)
-
-  # turn back into PIL image
-  noisy_image = reverse_transform(x_noisy.squeeze())
-
-  return noisy_image
 
 class Diffusion:
     def __init__(self, timesteps=200, device="cpu"):
@@ -144,3 +136,11 @@ class Diffusion:
         return self.p_sample_loop(model, shape=(batch_size, channels, image_size, image_size))
 
 
+def get_noisy_image(x_start, t):
+  # add noise
+  x_noisy = Diffusion.q_sample(x_start, t=t)
+
+  # turn back into PIL image
+  noisy_image = reverse_transform(x_noisy.squeeze())
+
+  return noisy_image
