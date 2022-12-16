@@ -44,7 +44,7 @@ q(x_t|x_0) &= \mathcal{N} \Big(x_t; \sqrt{\bar\alpha_t} x_0, (1-\bar\alpha_t) \m
 
 where  $$\alpha_t = 1 - \beta_t ,   \bar\alpha_t = \prod_{s = 1}^{t} \alpha_s$$
 
-## Reverse Process
+#### Reverse Process
 The reverse process removes noise starting at $p(x_T) = \mathcal{N}(x_T; \mathbf{0}, \mathbf{I})$
 for $T$ time steps.
 
@@ -57,7 +57,7 @@ p_\theta(x_{0:T}) &=p_\theta(x_T) \prod_{t = 1}^{T} p_\theta(x_{t-1} | x_t) \\
 
 where, $\theta$ are the learnable parameters.
 
-
+Th notation for forward process can be given by $q(x_t|x_{t-1})$ and for reverse diffusion given by $p(x_{t-1}|x_{t})$
 
 Predicting noise:
 
