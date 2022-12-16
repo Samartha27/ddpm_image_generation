@@ -25,7 +25,7 @@ class H5Dataset(torch.utils.data.Dataset):
             data = self.transform(data)
         return data
 
-transform = Compose([
+transform = transforms.Compose([
     transforms.ToPILImage(),
     transforms.RandomHorizontalFlip(),
     transforms.ToTensor(),
@@ -33,7 +33,7 @@ transform = Compose([
 ])
 
 def reverse_transform(data):
-    return Compose([
+    return transforms.Compose([
      Lambda(lambda t: (t + 1) / 2),
      Lambda(lambda t: t.permute(1, 2, 0)), # CHW to HWC
      Lambda(lambda t: t * 255.),

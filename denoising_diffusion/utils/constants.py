@@ -1,7 +1,7 @@
 
 
 
-TRAIN_DIR = "./data/tiny_imagenet/train.h5"
+TRAIN_DIR = "../data/tiny_imagenet/train.h5"
 #TRAIN_DIR = "./data/cifar_100/train.h5"
 RESULTS_DIR = "./results"
 
