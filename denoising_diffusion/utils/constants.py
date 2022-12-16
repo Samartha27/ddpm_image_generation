@@ -15,4 +15,3 @@ save_and_sample_every = 1000
 dim_mults = (1, 2, 4, 8, 16, )
 l_rate = 1e-4
 
-
