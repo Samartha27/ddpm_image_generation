@@ -59,7 +59,7 @@ The reverse process removes noise starting at $p(x_T) = \mathcal{N}(x_T; \mathbf
 for $T$ time steps.
 $$
 \begin{align}
-{p_\theta}(x_{t-1} | x_t) &= \mathcal{N}\big(x_{t-1};
+p_\theta(x_{t-1} | x_t) &= \mathcal{N}\big(x_{t-1};
 {\mu_\theta}(x_t, t), {\Sigma_\theta}(x_t, t)\big) \\
 {p_\theta}(x_{0:T}) &={p_\theta}(x_T) \prod_{t = 1}^{T} {p_\theta}(x_{t-1} | x_t) \\
 {p_\theta}(x_0) &= \int {p_\theta}(x_{0:T}) dx_{1:T}
