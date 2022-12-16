@@ -47,22 +47,24 @@ where $\beta_1, \dots, \beta_T$ is the variance schedule.
 
 We can sample $x_t$ at any timestep $t$ with,
 
+$$
 \begin{align}
 q(x_t|x_0) &= \mathcal{N} \Big(x_t; \sqrt{\bar\alpha_t} x_0, (1-\bar\alpha_t) \mathbf{I} \Big)
-\end{align}
+\end{align}$$
 
 where $\alpha_t = 1 - \beta_t$ and $\bar\alpha_t = \prod_{s=1}^t \alpha_s$
 
 ## Reverse Process
 The reverse process removes noise starting at $p(x_T) = \mathcal{N}(x_T; \mathbf{0}, \mathbf{I})$
 for $T$ time steps.
+$$
 \begin{align}
-\textcolor{lightgreen}{p_\theta}(x_{t-1} | x_t) &= \mathcal{N}\big(x_{t-1};
- \textcolor{lightgreen}{\mu_\theta}(x_t, t), \textcolor{lightgreen}{\Sigma_\theta}(x_t, t)\big) \\
-\textcolor{lightgreen}{p_\theta}(x_{0:T}) &= \textcolor{lightgreen}{p_\theta}(x_T) \prod_{t = 1}^{T} \textcolor{lightgreen}{p_\theta}(x_{t-1} | x_t) \\
-\textcolor{lightgreen}{p_\theta}(x_0) &= \int \textcolor{lightgreen}{p_\theta}(x_{0:T}) dx_{1:T}
-\end{align}
-$\textcolor{lightgreen}\theta$ are the parameters we train.
+{p_\theta}(x_{t-1} | x_t) &= \mathcal{N}\big(x_{t-1};
+{\mu_\theta}(x_t, t), {\Sigma_\theta}(x_t, t)\big) \\
+{p_\theta}(x_{0:T}) &={p_\theta}(x_T) \prod_{t = 1}^{T} {p_\theta}(x_{t-1} | x_t) \\
+{p_\theta}(x_0) &= \int {p_\theta}(x_{0:T}) dx_{1:T}
+\end{align}$$
+$theta$ are the parameters we train.
 ## Loss
 We optimize the ELBO (from Jenson's inequality) on the negative log likelihood.
 \begin{align}
