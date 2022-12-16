@@ -10,6 +10,7 @@ from .attention import Attention, LinearAttention
 from .resnet import ResnetBlock, ConvNextBlock
 from utils.helpers import default, exists
 
+
 class Residual(nn.Module):
     def __init__(self, fn):
         super().__init__()
@@ -47,20 +48,13 @@ class SinusoidalPositionEmbeddings(nn.Module):
 
 class Unet(nn.Module):
     def __init__(
-        self,
-        dim,
-        init_dim=None,
-        out_dim=None,
-        dim_mults=(1, 2, 4, 8),
-        channels=3,
-        with_time_emb=True,
-        resnet_block_groups=8,
-        use_convnext=True,
-        convnext_mult=2,
+        self,dim,
+        init_dim=None, out_dim=None, dim_mults=(1, 2, 4, 8),
+        channels=3, with_time_emb=True,
+        resnet_block_groups=8, use_convnext=True, convnext_mult=2,
     ):
         super().__init__()
 
-        # determine dimensions
         self.channels = channels
 
         init_dim = helpers.default(init_dim, dim // 3 * 2)
@@ -78,11 +72,10 @@ class Unet(nn.Module):
         if with_time_emb:
             time_dim = dim * 4
             self.time_mlp = nn.Sequential(
-                SinusoidalPositionEmbeddings(dim),
-                nn.Linear(dim, time_dim),
-                nn.GELU(),
-                nn.Linear(time_dim, time_dim),
-            )
+                                        SinusoidalPositionEmbeddings(dim),
+                                        nn.Linear(dim, time_dim),
+                                        nn.GELU(),
+                                        nn.Linear(time_dim, time_dim))
         else:
             time_dim = None
             self.time_mlp = None

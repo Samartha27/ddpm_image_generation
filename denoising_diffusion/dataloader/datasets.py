@@ -4,11 +4,11 @@ from torchvision import datasets
 from torchvision import transforms
 from torch.utils.data import DataLoader
 from torchvision.transforms import Compose, ToTensor, Lambda, ToPILImage, CenterCrop, Resize
-
 from utils import constants
 import h5py
 
-# Data loader
+
+
 class H5Dataset(torch.utils.data.Dataset):
     def __init__(self, h5_file, transform=None):
         self.transform = transform
