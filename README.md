@@ -31,15 +31,17 @@ The model produces 3 predictions:
 2. Predicting the original image directly (Not practical)
 3. The noise of image directly
 
-The U-net architecture takes the input image and projects the image into samller resolution bottleneck with the help of a Resnet block and Downsample block. After the bottleneck it projects the module back into the original size with the help of Upsample blocks. There are attention blocks employed at certain resolutions along with skip connections between layers of the same spatial resolutions.The sinusoidal embeddings projected into each of the residual blocks informs the model of which timestep it is running and also helps the model during the reverse-diffusion / denoising process to remove appropriate amounts of noise corresponding to how much noise was added in the forward diffusion at each time step.
+The U-net architecture takes the input image and projects the image into samller resolution bottleneck with the help of a Resnet block and Downsample block. After the bottleneck it projects the module back into the original size with the help of Upsample blocks. There are attention blocks employed at certain resolutions along with skip connections between layers of the same spatial resolutions.The sinusoidal embeddings projected into each of the residual blocks informs the model of which timestep it is running and also helps the model during the Reverse-diffusion / Denoising process to remove appropriate amounts of noise corresponding to how much noise was added in the forward diffusion at each time step.
 
 ## Forward Process
 The forward process adds noise to the data $x_0 \sim q(x_0)$, for $T$ timesteps.
 
+$$
 \begin{align}
 q(x_t | x_{t-1}) = \mathcal{N}\big(x_t; \sqrt{1-  \beta_t} x_{t-1}, \beta_t \mathbf{I}\big) \\
 q(x_{1:T} | x_0) = \prod_{t = 1}^{T} q(x_t | x_{t-1})
 \end{align}
+$$
 
 where $\beta_1, \dots, \beta_T$ is the variance schedule.
 
