@@ -60,11 +60,11 @@ for $T$ time steps.
 $$
 \begin{align}
 p_\theta(x_{t-1} | x_t) &= \mathcal{N}\big(x_{t-1};
-{\mu_\theta}(x_t, t), {\Sigma_\theta}(x_t, t)\big) \\
-{p_\theta}(x_{0:T}) &={p_\theta}(x_T) \prod_{t = 1}^{T} {p_\theta}(x_{t-1} | x_t) \\
-{p_\theta}(x_0) &= \int {p_\theta}(x_{0:T}) dx_{1:T}
+\mu_\theta(x_t, t), \Sigma_\theta(x_t, t)\big) \\
+p_\theta(x_{0:T}) &=p_\theta(x_T) \prod_{t = 1}^{T} p_\theta(x_{t-1} | x_t) \\
+p_\theta(x_0) &= \int {p_\theta}(x_{0:T}) dx_{1:T}
 \end{align}$$
-$theta$ are the parameters we train.
+$\theta$ are the parameters we train.
 ## Loss
 We optimize the ELBO (from Jenson's inequality) on the negative log likelihood.
 \begin{align}
