@@ -53,7 +53,6 @@ $$
 p_\theta(x_{t-1} | x_t) &= \mathcal{N}\big(x_{t-1};
 \mu_\theta(x_t, t), \Sigma_\theta(x_t, t)\big) \\
 p_\theta(x_{0:T}) &=p_\theta(x_T) \prod_{t = 1}^{T} p_\theta(x_{t-1} | x_t) \\
-p_\theta(x_0) &= \int {p_\theta}(x_{0:T}) dx_{1:T}
 \end{align}$$
 
 $\theta$ are the parameters we train.
@@ -64,11 +63,11 @@ Predicting noise
 
 $$
 \begin{align}
-\textcolor{lightgreen}{\mu_\theta}(x_t, t) &= \tilde\mu \bigg(x_t,
+\mu_\theta(x_t, t) &= \tilde\mu \bigg(x_t,
   \frac{1}{\sqrt{\bar\alpha_t}} \Big(x_t -
-   \sqrt{1-\bar\alpha_t}\textcolor{lightgreen}{\epsilon_\theta}(x_t, t) \Big) \bigg) \\
+   \sqrt{1-\bar\alpha_t} \epsilon_\theta(x_t, t) \Big) \bigg) \\
   &= \frac{1}{\sqrt{\alpha_t}} \Big(x_t -
-  \frac{\beta_t}{\sqrt{1-\bar\alpha_t}}\textcolor{lightgreen}{\epsilon_\theta}(x_t, t) \Big)
+  \frac{\beta_t}{\sqrt{1-\bar\alpha_t}} \epsilon_\theta(x_t, t) \Big)
 \end{align}$$
 
 where $\epsilon_\theta$ is a learned function that predicts $\epsilon$ given $(x_t, t)$.
