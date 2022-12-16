@@ -71,7 +71,7 @@ $$
   \frac{\beta_t}{\sqrt{1-\bar\alpha_t}} \epsilon_\theta(x_t, t) \Big)
 \end{align}$$
 
-where $\epsilon_\theta$ is a learned function that predicts $\epsilon$ given $(x_t, t)$.
+where, $\epsilon_\theta$ is a learned function that predicts $\epsilon$ given $(x_t, t)$.
 
 
 
