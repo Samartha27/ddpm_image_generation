@@ -42,7 +42,7 @@ $$
 q(x_t|x_0) &= \mathcal{N} \Big(x_t; \sqrt{\bar\alpha_t} x_0, (1-\bar\alpha_t) \mathbf{I} \Big)
 \end{align}$$
 
-where  $$\alpha_t = 1 - \beta_t and  \bar\alpha_t = \prod_{s = 1}^{t} \alpha_s$$
+where  $$\alpha_t = 1 - \beta_t$$ and  $$\bar\alpha_t = \prod_{s = 1}^{t} \alpha_s$$
 
 ## Reverse Process
 The reverse process removes noise starting at $p(x_T) = \mathcal{N}(x_T; \mathbf{0}, \mathbf{I})$
