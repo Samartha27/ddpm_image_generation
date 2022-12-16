@@ -22,7 +22,7 @@ $ conda activate env
 
 ## Methodology
 
-In a nutshell, first we try to slowly and systematically corrupt the inherent structure in a data distribution with an iterative forward diffusion process. Next, we try to use a UNET to learn a reverse diffusion process that restores the lost structure in the data distribution. This should yeild us a tractable generative model of the data.
+In a nutshell, first we try to slowly and systematically corrupt the inherent structure in a data distribution with an iterative forward diffusion process by making use of noise. Next, we try to use a UNET to learn a reverse diffusion process that restores the lost structure in the data distribution. This should yeild us a tractable generative model of the data.
 
 ## Dataset
 The dataset was downloaded from [Kaggle](https://www.kaggle.com/) 
