@@ -50,7 +50,7 @@ class Diffusion:
         # define alphas 
         self.alphas = 1.0 - self.betas
         self.alphas_cumprod = torch.cumprod(self.alphas, axis=0)
-        self.alphas_cumprod_prev = F.pad(self.alphas_cumprod[:-1], (1, 0), value=1.0)
+        self.alphas_cumprod_prev = F.pad(self.alphas_cumprod[:-1], (1, 0), value = 1.0)
         self.sqrt_recip_alphas = torch.sqrt(1.0 / self.alphas)
 
         # Diffusion q(x_t | x_{t-1})
@@ -58,7 +58,7 @@ class Diffusion:
         self.sqrt_one_minus_alphas_cumprod = torch.sqrt(1. - self.alphas_cumprod)
 
         # Calculationing posterior q(x_{t-1} | x_t, x_0)
-        self.posterior_variance = self.betas * (1. - self.alphas_cumprod_prev) / (1. - self.alphas_cumprod)
+        self.posterior_variance = self.betas * (1.0 - self.alphas_cumprod_prev) / (1.0 - self.alphas_cumprod)
 
     # forward diffusion
     def q_sample(self, x_start, t, noise=None):
@@ -73,11 +73,11 @@ class Diffusion:
         return sqrt_alphas_cumprod_t * x_start + sqrt_one_minus_alphas_cumprod_t * noise
 
     # training loss
-    def p_losses(self, denoise_model, x_start, t, noise=None, loss_type="l1"):
+    def p_losses(self, denoise_model, x_start, t, noise = None, loss_type = "l1"):
         if noise is None:
             noise = torch.randn_like(x_start)
 
-        x_noisy = self.q_sample(x_start=x_start, t=t, noise=noise)
+        x_noisy = self.q_sample(x_start=x_start, t = t, noise = noise)
         predicted_noise = denoise_model(x_noisy, t)
 
         if loss_type == 'l1':
