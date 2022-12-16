@@ -53,11 +53,11 @@ class Diffusion:
         self.alphas_cumprod_prev = F.pad(self.alphas_cumprod[:-1], (1, 0), value=1.0)
         self.sqrt_recip_alphas = torch.sqrt(1.0 / self.alphas)
 
-        # calculations for diffusion q(x_t | x_{t-1}) and others
+        # Diffusion q(x_t | x_{t-1})
         self.sqrt_alphas_cumprod = torch.sqrt(self.alphas_cumprod)
         self.sqrt_one_minus_alphas_cumprod = torch.sqrt(1. - self.alphas_cumprod)
 
-        # calculations for posterior q(x_{t-1} | x_t, x_0)
+        # Calculationing posterior q(x_{t-1} | x_t, x_0)
         self.posterior_variance = self.betas * (1. - self.alphas_cumprod_prev) / (1. - self.alphas_cumprod)
 
     # forward diffusion
@@ -100,8 +100,7 @@ class Diffusion:
         )
         sqrt_recip_alphas_t = extract(self.sqrt_recip_alphas, t, x.shape)
         
-        # Equation 11 in the paper
-        # Use our model (noise predictor) to predict the mean
+        # noise predictor to predict the mean
         model_mean = sqrt_recip_alphas_t * (
             x - betas_t * model(x, t) / sqrt_one_minus_alphas_cumprod_t
         )
