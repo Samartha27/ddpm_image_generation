@@ -33,6 +33,8 @@ The model produces 3 predictions:
 
 The U-net architecture takes the input image and projects the image into samller resolution bottleneck with the help of a Resnet block and Downsample block. After the bottleneck it projects the module back into the original size with the help of Upsample blocks. There are attention blocks employed at certain resolutions along with skip connections between layers of the same spatial resolutions.The sinusoidal embeddings projected into each of the residual blocks informs the model of which timestep it is running and also helps the model during the Reverse-diffusion / Denoising process to remove appropriate amounts of noise corresponding to how much noise was added in the forward diffusion at each time step.
 
+The notation for forward process can be given by $q(x_t|x_{t-1})$ and for reverse diffusion given by $p(x_{t-1}|x_{t})$
+
 #### Forward Process
 
 We can sample $x_t$ at any timestep $t$ with,
@@ -57,7 +59,6 @@ p_\theta(x_{0:T}) &=p_\theta(x_T) \prod_{t = 1}^{T} p_\theta(x_{t-1} | x_t) \\
 
 where, $\theta$ are the learnable parameters.
 
-Th notation for forward process can be given by $q(x_t|x_{t-1})$ and for reverse diffusion given by $p(x_{t-1}|x_{t})$
 
 Predicting noise:
 
