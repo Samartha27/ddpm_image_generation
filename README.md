@@ -34,16 +34,6 @@ The model produces 3 predictions:
 The U-net architecture takes the input image and projects the image into samller resolution bottleneck with the help of a Resnet block and Downsample block. After the bottleneck it projects the module back into the original size with the help of Upsample blocks. There are attention blocks employed at certain resolutions along with skip connections between layers of the same spatial resolutions.The sinusoidal embeddings projected into each of the residual blocks informs the model of which timestep it is running and also helps the model during the Reverse-diffusion / Denoising process to remove appropriate amounts of noise corresponding to how much noise was added in the forward diffusion at each time step.
 
 ## Forward Process
-The forward process adds noise to the data $x_0 \sim q(x_0)$, for $T$ timesteps.
-
-$$
-\begin{align}
-q(x_t | x_{t-1}) = \mathcal{N}\big(x_t; \sqrt{1-  \beta_t} x_{t-1}, \beta_t \mathbf{I}\big) \\
-q(x_{1:T} | x_0) = \prod_{t = 1}^{T} q(x_t | x_{t-1})
-\end{align}
-$$
-
-where $\beta_1, \dots, \beta_T$ is the variance schedule.
 
 We can sample $x_t$ at any timestep $t$ with,
 
@@ -82,20 +72,6 @@ $$
 \end{align}$$
 
 where $\epsilon_\theta$ is a learned function that predicts $\epsilon$ given $(x_t, t)$.
-This gives,
-\begin{align}
-L_{t-1}
-&= \mathbb{E}_{x_0, \epsilon} \Bigg[ \frac{\beta_t^2}{2\sigma_t^2 \alpha_t (1 - \bar\alpha_t)}
-  \Big\Vert
-  \epsilon - \textcolor{lightgreen}{\epsilon_\theta}(\sqrt{\bar\alpha_t} x_0 + \sqrt{1-\bar\alpha_t}\epsilon, t)
-  \Big\Vert^2 \Bigg]
-\end{align}
-That is, we are training to predict the noise.
-
-
-
-
-
 
 
 
