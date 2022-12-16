@@ -78,7 +78,7 @@ q(x_t|x_0) &= \mathcal{N} \Big(x_t; \sqrt{\bar\alpha_t} x_0, (1-\bar\alpha_t) \m
 
 where  $$\alpha_t = 1 - \beta_t ,   \bar\alpha_t = \prod_{s = 1}^{t} \alpha_s$$
 
-### Reverse Process
+#### Reverse Process $p$
 The reverse process removes noise starting at $p(x_T) = \mathcal{N}(x_T; \mathbf{0}, \mathbf{I})$
 for $T$ time steps.
 
@@ -103,17 +103,17 @@ $$
 \end{align}$$
 
 
-### Neural Network Architecture
+#### Neural Network Architecture
 An U-net architecture was choosen as the noise predictor $\epsilon_\theta(x_t, t)$. The network takes the input image and projects the image into smaller resolution bottleneck with the help of a Resnet block and Downsample block. After the bottleneck it projects the module back into the original size with the help of Upsample blocks. There are attention blocks employed at certain resolutions along with skip connections between layers of the same spatial resolutions. The sinusoidal embeddings projected into each of the residual blocks informs the model of which timestep it is running and also helps the model during the Reverse-diffusion / Denoising process to remove appropriate amounts of noise corresponding to how much noise was added in the forward diffusion at each time step.
 
 ![u-net-architecture](images/u-net-architecture.png)
 *Original [Unet][unet_paper] Architecture. DDPM made modifications in each block, but retains the same high level architecture*
 
-### Variance Schedule
+#### Variance Schedule
 
 TODO
 
-### Training and Inference
+#### Training and Inference
 
 TODO
 
