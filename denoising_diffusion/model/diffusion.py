@@ -130,7 +130,7 @@ class Diffusion:
 
     # client should call this method to sample images
     @torch.no_grad()
-    def sample(self, model, image_size, batch_size=16, channels=3):
+    def sample(self, model, image_size, batch_size=16, channels = 3):
         return self.p_sample_loop(model, shape=(batch_size, channels, image_size, image_size))
 
 
