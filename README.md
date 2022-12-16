@@ -35,15 +35,20 @@ The U-net architecture takes the input image and projects the image into samller
 
 ## Forward Process
 The forward process adds noise to the data $x_0 \sim q(x_0)$, for $T$ timesteps.
+
 \begin{align}
 q(x_t | x_{t-1}) = \mathcal{N}\big(x_t; \sqrt{1-  \beta_t} x_{t-1}, \beta_t \mathbf{I}\big) \\
 q(x_{1:T} | x_0) = \prod_{t = 1}^{T} q(x_t | x_{t-1})
 \end{align}
+
 where $\beta_1, \dots, \beta_T$ is the variance schedule.
+
 We can sample $x_t$ at any timestep $t$ with,
+
 \begin{align}
 q(x_t|x_0) &= \mathcal{N} \Big(x_t; \sqrt{\bar\alpha_t} x_0, (1-\bar\alpha_t) \mathbf{I} \Big)
 \end{align}
+
 where $\alpha_t = 1 - \beta_t$ and $\bar\alpha_t = \prod_{s=1}^t \alpha_s$
 
 ## Reverse Process
