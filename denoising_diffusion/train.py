@@ -14,8 +14,6 @@ from model.diffusion import Diffusion
 
 
 
-
-
 if __name__ == '__main__':
 
 
@@ -24,7 +22,7 @@ if __name__ == '__main__':
     else:
         device = "cpu"
 
-    loader = datasets.get_loader(constants.TRAIN_DIR, batch_size= constants.batch_size)
+    loader = datasets.get_loader(data_dir = constants.TRAIN_DIR, batch_size = constants.batch_size)
 
     model = Unet(
                 dim = constants.image_size,
