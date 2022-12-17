@@ -170,6 +170,10 @@ The figure below shows how the Loss plateaus after the approximately 500 iterati
 
 Here is generated images at different Epoch
 
+*Epoch 1*            |  *Epoch 20*
+:-------------------------:|:-------------------------:
+![epoch 1](images/diffusion_deep-samples-1.png)  |  ![epoch 20](images/diffusion_deep-samples-20.png)
+
 ![epoch 1](images/diffusion_deep-samples-1.png)
 *Epoch 1*
 
