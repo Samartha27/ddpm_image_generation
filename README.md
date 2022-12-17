@@ -148,6 +148,8 @@ For training we used the [TinyImageNet][TinyImageNet] ([Download][TinyImageNet_d
 
 ### Experiment Detail
 
+Due to limited time, we are unable to get our implementation from scratch to work. The below evaluations are partially based on [this DDPM implementation][diffusion-impl].
+
 We trained the u-net with 4 layers (on each side of the "U") using L1 loss and batch size 64 with Adam optimizer with learning rate of 0.0002. We used a diffusion timestep of $T = 1000$ that is the same as the DDPM paper. We used the cosine variance scheduler mentioned in the [Improved DDPM][improved-DDPM_paper]. The training takes around 10 minutes per epoch on NVIDIA V100S GPU. We trained for 100 epoch for the final model. The evaluation takes around 90 second to generate a batch of 64 images.
 
 ## Evaluation and Results
@@ -165,6 +167,8 @@ We computed the [FID][FID] using the generated images against the training data 
 The figure below shows how the loss function plateaus after the approximately 500 iterations. With a batch size of 64, each epoch is around 1563 iterations. The loss function eventually stablizes at around 0.12 to 0.18.
 
 ![Loss](images/Loss.png)
+
+The FID suggests that the model is quite unstable, the quality of the generated results varies noticeably between epochs. We suspect this is due to the high dependence on the initial noise for generation. Recent research has provided insight to solve this issue by putting thematically meaningful information into the diffusion process (also known as conditioned diffusion) to contrain the generation results.
 
 ## Examples
 
@@ -185,8 +189,12 @@ Here is an animation of the reverse process that generates an image
 
 ## References
 
-[Diffusion Models](https://medium.com/@monadsblog/diffusion-models-4dbe58489a2f) <br />
-[EINOPS](https://github.com/arogozhnikov/einops)<br />
+[Diffusion Models](https://medium.com/@monadsblog/diffusion-models-4dbe58489a2f)
+
+[DDPM paper][DDPM_paper]
+
+[Annotated Diffusion][annotated-diffusion]
+<!-- [EINOPS](https://github.com/arogozhnikov/einops) -->
 
 
 
@@ -207,3 +215,4 @@ Here is an animation of the reverse process that generates an image
 [IMAGEN_paper]: https://arxiv.org/abs/2205.11487
 [stable-diffusion_paper]: https://arxiv.org/abs/2112.10752
 [unet_paper]: https://arxiv.org/abs/1505.04597
+[diffusion-impl]: https://github.com/lucidrains/denoising-diffusion-pytorch
