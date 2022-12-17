@@ -157,8 +157,8 @@ We computed the [FID][FID] using the generated images against the training data 
 | Condition  | FID score  |
 |---|---|
 | Random noise      | 410.870     |
-| Epoch 20          | 195.967     |
-| Epoch 50          | 117.015     |
+| Epoch 20          |    117.015  |
+| Epoch 50          |   195.967   |
 | Epoch 100         | TBD     |
 
 
