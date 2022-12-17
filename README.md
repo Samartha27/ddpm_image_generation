@@ -135,16 +135,18 @@ Epoch 100 -
 
 For training we used the [TinyImageNet][TinyImageNet] ([Download][TinyImageNet_dl]) dataset. This dataset consists of 100,000 images with 200 classes of objects (500 image for each class). Each image is has 3 channels (RGB) and has a width and height of 64. They can be represented as a tensor with dimension `(3, 64, 64)` in `CHW` notation.
 
-Samples: TODO
+![original-samples](images/original-samples-0.png)
+*Samples from [TinyImageNet][TinyImageNet] dataset*
 
-The images are normalized using mean as ```[0.485, 0.456, 0.406]``` and standard deviation as ```[0.229, 0.224, 0.225]``` 
+<!-- The images are normalized using mean as ```[0.485, 0.456, 0.406]``` and standard deviation as ```[0.229, 0.224, 0.225]```  -->
 
+### Experiment Detail
 
-## Results
+We trained the u-net with 4 layers (on each side of the "U") using L1 loss and batch size 64 with Adam optimizer with learning rate of 0.001. We used a diffusion timestep of $T = 1000$ and linear variance scheduler that is the same as the DDPM paper. The training takes around 10 minutes per epoch on NVIDIA V100S GPU. We trained for 100 epoch for the final model.
 
+## Results and Discussion
 
-
-
+TODO
 
 ## References
 
