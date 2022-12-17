@@ -179,7 +179,7 @@ Here is generated images at different Epoch
 ![epoch 50](images/diffusion_deep-samples-50.png) | ![epoch 100](images/diffusion_deep-samples-100.png)
 
 
-Here is an animation of the reverse process that generats an image
+Here is an animation of the reverse process that generates an image
 
 ![animation](images/deep_diffusion-animation-5.gif)
 
