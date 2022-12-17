@@ -150,7 +150,7 @@ TODO
 
 ## References
 
-[Diffusion Models](https://medium.com/@monadsblog/diffusion-models-4dbe58489a2f)
+[Diffusion Models](https://medium.com/@monadsblog/diffusion-models-4dbe58489a2f) <br />
 [EINOPS](https://github.com/arogozhnikov/einops)
 [TinyImageNet Description][TinyImageNet]
 
