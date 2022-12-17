@@ -134,8 +134,8 @@ During sampling, we follow the reverse process and apply the denoise neural netw
 
 ## Experiments
 Random noise - FID:  410.8698676683755 <br />
-Epoch 20 - FID:  117.01498815561581 <br />
-Epoch 50 -  <br />
+Epoch 20 -  FID:  195.96676085533448 <br />
+Epoch 50 - FID:  117.01498815561581 <br />
 Epoch 100 - <br />
 
 
