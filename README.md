@@ -172,19 +172,13 @@ Here is generated images at different Epoch
 
 *Epoch 1*            |  *Epoch 20*
 :-------------------------:|:-------------------------:
-![epoch 1](images/diffusion_deep-samples-1.png)|![epoch 20](images/diffusion_deep-samples-20.png)
+![epoch 1](images/diffusion_deep-samples-1.png)  |  ![epoch 20](images/diffusion_deep-samples-20.png)
 
-![epoch 1](images/diffusion_deep-samples-1.png)
-*Epoch 1*
+*Epoch 50* | *Epoch 100*
+:-------------------------:|:-------------------------:
 
-![epoch 20](images/diffusion_deep-samples-20.png)
-*Epoch 20*
+![epoch 50](images/diffusion_deep-samples-50.png) | ![epoch 100](images/diffusion_deep-samples-100.png)
 
-![epoch 50](images/diffusion_deep-samples-50.png)
-*Epoch 50*
-
-![epoch 100](images/diffusion_deep-samples-100.png)
-*Epoch 100*
 
 Here is an animation of the reverse process that generats an image
 
