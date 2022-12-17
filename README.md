@@ -12,7 +12,7 @@ $ conda activate env
 ```
 --->
 
-Author: Yu Xin, Samartha Ramkumar
+Authors: Yu Xin, Samartha Ramkumar
 
 ## Abstract
 
