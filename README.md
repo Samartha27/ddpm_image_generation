@@ -162,13 +162,13 @@ We computed the [FID][FID] using the generated images against the training data 
 | Epoch 100         | TBD     |
 
 
-The figure below shows how the Loss plateaus after the approximately 500 iterations. 
+The figure below shows how the loss function plateaus after the approximately 500 iterations. With a batch size of 64, each epoch is around 1563 iterations. The loss function eventually stablizes at around 0.12 to 0.18.
 
 ![Loss](images/Loss.png)
 
 ## Examples
 
-Here is generated images at different Epoch
+Here is generated images at different Epoch (generated images in each group is independent)
 
 *Epoch 1*            |  *Epoch 20*
 :-------------------------:|:-------------------------:
