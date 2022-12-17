@@ -176,7 +176,6 @@ Here is generated images at different Epoch
 
 *Epoch 50* | *Epoch 100*
 :-------------------------:|:-------------------------:
-
 ![epoch 50](images/diffusion_deep-samples-50.png) | ![epoch 100](images/diffusion_deep-samples-100.png)
 
 
