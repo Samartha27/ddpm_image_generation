@@ -1,4 +1,6 @@
 
+theme: Cayman
+
 # A Deep Dive into Diffusion-Based Image Generation Model
 
 <!---
