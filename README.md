@@ -14,7 +14,7 @@ $ conda activate env
 
 Authors: Yu Xin, Samartha Ramkumar
 
-The youtube link to our presentation is found here. https://youtu.be/0Mv9eMjMYIQ
+The youtube link to our presentation is found here. [https://youtu.be/0Mv9eMjMYIQ](https://youtu.be/0Mv9eMjMYIQ)
 
 ## Abstract
 
@@ -28,10 +28,8 @@ we trained the model on [TinyImageNet][TinyImageNet] and the results are evaluat
 Deep Learning based image generation techniques has been under active reserarch, as it is useful in many situations ranging from assisting artists to develop creative ideas to generating photorealistic human faces from texual descriptions for law enforcements. 
 The techniques for Deep Learning based image generation comes from primarily 4 flavors, [Generative Adversarial Network (GAN)][gan_paper], [Variational Autoencoder (VAE)][vae_paper], [Flow-base methods][flow_paper], and Diffusion-based methods.
 
-<!-- ![generative-overview](generative-overview.png) -->
-<p align = "center">
-<img src ="https://github.com/Samartha27/ddpm_image_generation/blob/main/images/generative-overview.png" width= 70% height = 70% >
-</p>
+![generative-overview](generative-overview.png)
+
 
 *4 major approaches of image generation, [source][diffusion-blog]*
 
