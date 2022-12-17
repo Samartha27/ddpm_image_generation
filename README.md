@@ -29,6 +29,7 @@ The techniques for Deep Learning based image generation comes from primarily 4 f
 <p align = "center">
 <img src ="https://github.com/Samartha27/ddpm_image_generation/blob/main/images/generative-overview.png" width= 70% height = 70% >
 </p>
+
 *4 major approaches of image generation, [source][diffusion-blog]*
 
 Comparing to other approaches, diffusion-based methods are powerful because it balanced tractability (i.e., how interpretable is the model) and flexibility (i.e., how expressive is the model), which has been a major difficulty for other approaches ([cite][diffusion-blog]).
