@@ -17,16 +17,15 @@ $ conda activate env
 
 <!-- In the Denoising Diffusion Probabilistic model for image generation,  -->
 
-In this project, we explored the internal of the [Denoise Diffusion Probablistic Model (DDPM)][DDPM_paper], a simple diffusion-based image generation model. We attempted to implement this model using pytorch. Finally,
+In this project, we explored the internal of the [Denoise Diffusion Probablistic Model (DDPM)][DDPM_paper], a diffusion-based image generation model. We attempted to implement this model using pytorch. Finally,
 we trained the model on [TinyImageNet][TinyImageNet] and the results are evaluated using [FID].
-
-## Problem statement
 
 ## Motivation and Related Works
 
 Deep Learning based image generation techniques has been under active reserarch, as it is useful in many situations ranging from assisting artists to develop creative ideas to generating photorealistic human faces from texual descriptions for law enforcements. 
 The techniques for Deep Learning based image generation comes from primarily 4 flavors, [Generative Adversarial Network (GAN)][gan_paper], [Variational Autoencoder (VAE)][vae_paper], [Flow-base methods][flow_paper], and Diffusion-based methods.
 
+<!-- ![generative-overview](generative-overview.png) -->
 <p align = "center">
 <img src ="https://github.com/Samartha27/ddpm_image_generation/blob/main/images/generative-overview.png" width= 70% height = 70% >
 </p>
@@ -44,6 +43,7 @@ To the best of our knowledge, [Denoise Diffusion Probablistic Model][DDPM_paper]
 
 DDPM generates images by starting with a random noise and iteratively reducing the noise by applying a denoising neural network. More specifically, it defines a Markov Chain with denoising process (via neural network with parameter $\theta$) $p_\theta(x_{t-1} | x_t)$ and noise-adding process $q_(x_{t} | x_{t-1})$.
 
+<!-- ![denoising-diffusion](denoising-diffusion.png) -->
 <p align = "center">
 <img src ="https://github.com/Samartha27/ddpm_image_generation/blob/main/images/denoising-diffusion.png" >
 </p>
@@ -110,6 +110,7 @@ $$
 #### U-net Architecture
 An U-net architecture was choosen as the noise predictor $\epsilon_\theta(x_t, t)$. The network takes the input image and projects the image into smaller resolution bottleneck with the help of a Resnet block and Downsample block. After the bottleneck it projects the module back into the original size with the help of Upsample blocks. There are attention blocks employed at certain resolutions along with skip connections between layers of the same spatial resolutions. The sinusoidal embeddings projected into each of the residual blocks informs the model of which timestep it is running and also helps the model during the Reverse-diffusion / Denoising process to remove appropriate amounts of noise corresponding to how much noise was added in the forward diffusion at each time step.
 
+<!-- ![u-net-architecture](u-net-architecture.png) -->
 <p align = "center">
 <img src ="https://github.com/Samartha27/ddpm_image_generation/blob/main/images/u-net-architecture.png" width= 70% height = 50%>
 </p>
@@ -124,6 +125,7 @@ The variance $\beta_1, ..., \beta_t$ is increasing linearly from $10^{-4}$ to $0
 
 With all the above, the training and sampling algorithms can be defined as the following
 
+<!-- ![diffusion-algorithms](images/diffusion-algorithms.png) -->
 ![diffusion-algorithms](images/diffusion-algorithms.png)
 *Training and Inference Algorithms suggested by the [DDPM paper][DDPM_paper]*
 
@@ -142,6 +144,7 @@ Epoch 100 - <br />
 
 For training we used the [TinyImageNet][TinyImageNet] ([Download][TinyImageNet_dl]) dataset. This dataset consists of 100,000 images with 200 classes of objects (500 image for each class). Each image is has 3 channels (RGB) and has a width and height of 64. They can be represented as a tensor with dimension `(3, 64, 64)` in `CHW` notation.
 
+<!-- ![original-samples](images/original-samples-0.png) -->
 ![original-samples](images/original-samples-0.png)
 *Samples from [TinyImageNet][TinyImageNet] dataset*
 
