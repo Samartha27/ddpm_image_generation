@@ -170,11 +170,21 @@ The figure below shows how the Loss plateaus after the approximately 500 iterati
 
 Here is generated images at different Epoch
 
-TODO
+![epoch 1](images/diffusion_deep-samples-1.png)
+*Epoch 1*
 
-Here is an animation of reverse process that generats the image
+![epoch 20](images/diffusion_deep-samples-20.png)
+*Epoch 20*
 
-TODO
+![epoch 50](images/diffusion_deep-samples-50.png)
+*Epoch 50*
+
+![epoch 100](images/diffusion_deep-samples-100.png)
+*Epoch 100*
+
+Here is an animation of the reverse process that generats an image
+
+![animation](images/deep_diffusion-animation-5.gif)
 
 ## References
 
