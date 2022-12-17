@@ -27,6 +27,7 @@ we trained the model on [TinyImageNet][TinyImageNet] and the results are evaluat
 
 Deep Learning based image generation techniques has been under active reserarch, as it is useful in many situations ranging from assisting artists to develop creative ideas to generating photorealistic human faces from texual descriptions for law enforcements. 
 The techniques for Deep Learning based image generation comes from primarily 4 flavors, [Generative Adversarial Network (GAN)][gan_paper], [Variational Autoencoder (VAE)][vae_paper], [Flow-base methods][flow_paper], and Diffusion-based methods.
+
 <p align = "center">
 <img src ="https://github.com/Samartha27/ddpm_image_generation/blob/main/images/generative-overview.png" width= 70% height = 70% >
 </p>
@@ -44,7 +45,10 @@ To the best of our knowledge, [Denoise Diffusion Probablistic Model][DDPM_paper]
 
 DDPM generates images by starting with a random noise and iteratively reducing the noise by applying a denoising neural network. More specifically, it defines a Markov Chain with denoising process (via neural network with parameter $\theta$) $p_\theta(x_{t-1} | x_t)$ and noise-adding process $q_(x_{t} | x_{t-1})$.
 
-![denoising-diffusion](images/denoising-diffusion.png)
+<p align = "center">
+<img src ="https://github.com/Samartha27/ddpm_image_generation/blob/main/images/denoising-diffusion.png" >
+</p>
+
 *Illustration from the [DDPM paper][DDPM_paper]*
 
 The noisy image is assumed to be drawn from a distribution $x_T$ and the training image $x_0$.
@@ -107,7 +111,10 @@ $$
 #### U-net Architecture
 An U-net architecture was choosen as the noise predictor $\epsilon_\theta(x_t, t)$. The network takes the input image and projects the image into smaller resolution bottleneck with the help of a Resnet block and Downsample block. After the bottleneck it projects the module back into the original size with the help of Upsample blocks. There are attention blocks employed at certain resolutions along with skip connections between layers of the same spatial resolutions. The sinusoidal embeddings projected into each of the residual blocks informs the model of which timestep it is running and also helps the model during the Reverse-diffusion / Denoising process to remove appropriate amounts of noise corresponding to how much noise was added in the forward diffusion at each time step.
 
+<p align = "center">
 <img src ="https://github.com/Samartha27/ddpm_image_generation/blob/main/images/u-net-architecture.png" width= 70% height = 70%>
+</p>
+
 *Original [Unet][unet_paper] Architecture. DDPM made modifications in each block, but retains the same high level architecture*
 
 #### Variance Schedule
