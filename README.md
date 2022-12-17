@@ -150,10 +150,8 @@ TODO
 
 ## References
 
-[Diffusion Models](https://medium.com/@monadsblog/diffusion-models-4dbe58489a2f) <br />
-[Diffusion Models Made Easy](https://towardsdatascience.com/diffusion-models-made-easy-8414298ce4da) <br />
+[Diffusion Models](https://medium.com/@monadsblog/diffusion-models-4dbe58489a2f)
 [EINOPS](https://github.com/arogozhnikov/einops)
-
 [TinyImageNet Description][TinyImageNet]
 
 [TinyImageNet]: https://www.kaggle.com/competitions/tiny-imagenet/overview
