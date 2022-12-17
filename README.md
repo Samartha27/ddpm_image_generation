@@ -28,7 +28,7 @@ we trained the model on [TinyImageNet][TinyImageNet] and the results are evaluat
 Deep Learning based image generation techniques has been under active reserarch, as it is useful in many situations ranging from assisting artists to develop creative ideas to generating photorealistic human faces from texual descriptions for law enforcements. 
 The techniques for Deep Learning based image generation comes from primarily 4 flavors, [Generative Adversarial Network (GAN)][gan_paper], [Variational Autoencoder (VAE)][vae_paper], [Flow-base methods][flow_paper], and Diffusion-based methods.
 
-<img src ="https://github.com/Samartha27/ddpm_image_generation/blob/main/images/generative-overview.png" width= 50% height = 50%>
+<img align = "center" src ="https://github.com/Samartha27/ddpm_image_generation/blob/main/images/generative-overview.png" width= 70% height = 70% >
 *4 major approaches of image generation, [source][diffusion-blog]*
 
 Comparing to other approaches, diffusion-based methods are powerful because it balanced tractability (i.e., how interpretable is the model) and flexibility (i.e., how expressive is the model), which has been a major difficulty for other approaches ([cite][diffusion-blog]).
