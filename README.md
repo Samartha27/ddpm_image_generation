@@ -28,7 +28,7 @@ we trained the model on [TinyImageNet][TinyImageNet] and the results are evaluat
 Deep Learning based image generation techniques has been under active reserarch, as it is useful in many situations ranging from assisting artists to develop creative ideas to generating photorealistic human faces from texual descriptions for law enforcements. 
 The techniques for Deep Learning based image generation comes from primarily 4 flavors, [Generative Adversarial Network (GAN)][gan_paper], [Variational Autoencoder (VAE)][vae_paper], [Flow-base methods][flow_paper], and Diffusion-based methods.
 
-![generative-overview](generative-overview.png)
+![generative-overview](images/generative-overview.png)
 
 
 *4 major approaches of image generation, [source][diffusion-blog]*
@@ -112,10 +112,8 @@ $$
 #### U-net Architecture
 An U-net architecture was choosen as the noise predictor $\epsilon_\theta(x_t, t)$. The network takes the input image and projects the image into smaller resolution bottleneck with the help of a Resnet block and Downsample block. After the bottleneck it projects the module back into the original size with the help of Upsample blocks. There are attention blocks employed at certain resolutions along with skip connections between layers of the same spatial resolutions. The sinusoidal embeddings projected into each of the residual blocks informs the model of which timestep it is running and also helps the model during the Reverse-diffusion / Denoising process to remove appropriate amounts of noise corresponding to how much noise was added in the forward diffusion at each time step.
 
-<!-- ![u-net-architecture](u-net-architecture.png) -->
-<p align = "center">
-<img src ="https://github.com/Samartha27/ddpm_image_generation/blob/main/images/u-net-architecture.png" width= 70% height = 50%>
-</p>
+![u-net-architecture](images/u-net-architecture.png)
+
 
 *Original [Unet][unet_paper] Architecture. DDPM made modifications in each block, but retains the same high level architecture*
 
