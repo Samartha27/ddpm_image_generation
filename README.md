@@ -159,10 +159,10 @@ We computed the [FID][FID] using the generated images against the training data 
 
 | Condition  | FID score  |
 |---|---|
-| Random noise      | 410.870     |
-| Epoch 20          |    117.015  |
-| Epoch 50          |   195.967   |
-| Epoch 100         | TBD     |
+| Random noise      | 410.870 |
+| Epoch 20          | 117.015 |
+| Epoch 50          | 195.967 |
+| Epoch 100         | 139.16  |
 
 
 The figure below shows how the loss function plateaus after the approximately 500 iterations. With a batch size of 64, each epoch is around 1563 iterations. The loss function eventually stablizes at around 0.12 to 0.18.
