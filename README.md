@@ -103,10 +103,11 @@ $$
 \end{align}$$
 
 
-#### Neural Network Architecture
+#### U-net Architecture
 An U-net architecture was choosen as the noise predictor $\epsilon_\theta(x_t, t)$. The network takes the input image and projects the image into smaller resolution bottleneck with the help of a Resnet block and Downsample block. After the bottleneck it projects the module back into the original size with the help of Upsample blocks. There are attention blocks employed at certain resolutions along with skip connections between layers of the same spatial resolutions. The sinusoidal embeddings projected into each of the residual blocks informs the model of which timestep it is running and also helps the model during the Reverse-diffusion / Denoising process to remove appropriate amounts of noise corresponding to how much noise was added in the forward diffusion at each time step.
 
 ![u-net-architecture](images/u-net-architecture.png)
+<img src ="https://github.com/Samartha27/ddpm_image_generation/blob/main/images/u-net-architecture.png" width= 50 height = 50%>
 *Original [Unet][unet_paper] Architecture. DDPM made modifications in each block, but retains the same high level architecture*
 
 #### Variance Schedule
@@ -125,10 +126,10 @@ In the training, we first uniformly sample a random timestep $t$. Then using the
 During sampling, we follow the reverse process and apply the denoise neural network $T$ times to get the final image. Unlike the forward process, we have to run the neural network $T$ times, which can be quite expensive. This is the major issue of DDPM, and many later research has improved upon this.
 
 ## Experiments
-Random noise - FID:  410.8698676683755
-Epoch 20 - FID:  117.01498815561581
-Epoch 50 - 
-Epoch 100 - 
+Random noise - FID:  410.8698676683755 <br />
+Epoch 20 - FID:  117.01498815561581 <br />
+Epoch 50 -  <br />
+Epoch 100 - <br />
 
 
 ### Dataset
