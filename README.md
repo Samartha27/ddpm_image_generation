@@ -125,6 +125,11 @@ In the training, we first uniformly sample a random timestep $t$. Then using the
 During sampling, we follow the reverse process and apply the denoise neural network $T$ times to get the final image. Unlike the forward process, we have to run the neural network $T$ times, which can be quite expensive. This is the major issue of DDPM, and many later research has improved upon this.
 
 ## Experiments
+Random noise - FID:  410.8698676683755
+Epoch 20 - FID:  117.01498815561581
+Epoch 50 - 
+Epoch 100 - 
+
 
 ### Dataset
 
