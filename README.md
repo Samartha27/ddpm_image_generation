@@ -111,36 +111,28 @@ An U-net architecture was choosen as the noise predictor $\epsilon_\theta(x_t, t
 
 #### Variance Schedule
 
-TODO
+The variance $\beta_1, ..., \beta_t$ is increasing linearly from $10^{-4}$ to $0.02$ in the original implementation. However, other schedules are also possible and may produce better results. For example, the [Improved DDPM paper][improved-DDPM_paper] proposed cosine schedule.
 
 #### Training and Inference
 
-TODO
+With all the above, the training and sampling algorithms can be defined as the following
 
+![diffusion-algorithms](images/diffusion-algorithms.png)
+*Training and Inference Algorithms suggested by the [DDPM paper][DDPM_paper]*
 
+In the training, we first uniformly sample a random timestep $t$. Then using the forward_process, we add the noise to image according to $t$, feeding the noisy image to the neural network, and use a loss function to compare the predicted noise and actual noise. The loss function can be L1-norm, L2-norm (MSE), or smooth-L1. In reality, the loss function of diffusion model is computed using Varitional Lower Bound (VLB) (see [VAE paper][vae_paper] for detail). With some simplification, we can derive the loss function mentioned above.
 
+During sampling, we follow the reverse process and apply the denoise neural network $T$ times to get the final image. Unlike the forward process, we have to run the neural network $T$ times, which can be quite expensive. This is the major issue of DDPM, and many later research has improved upon this.
 
+## Experiments
 
-
-
-
-
-
-
-## Dataset
+### Dataset
 
 For training we used the [TinyImageNet][TinyImageNet] ([Download][TinyImageNet_dl]) dataset. This dataset consists of 100,000 images with 200 classes of objects (500 image for each class). Each image is has 3 channels (RGB) and has a width and height of 64. They can be represented as a tensor with dimension `(3, 64, 64)` in `CHW` notation.
 
 Samples: TODO
 
 The images are normalized using mean as ```[0.485, 0.456, 0.406]``` and standard deviation as ```[0.229, 0.224, 0.225]``` 
-
-
-
-## Experiments
-Our model is trained on NVIDIA GTX 1050 Ti GPU.
-
-
 
 
 ## Results
