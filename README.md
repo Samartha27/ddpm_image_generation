@@ -161,6 +161,8 @@ We computed the [FID][FID] using the generated images against the training data.
 | Epoch 50          | 117.015     |
 | Epoch 100         | TBD     |
 
+The figure below shows how the Loss plateaus after the approximately 500 iterations. 
+
 ![Loss](images/Loss.png)
 
 ## Examples
