@@ -166,6 +166,16 @@ Epoch 20 -  FID:  195.96676085533448 <br />
 Epoch 50 - FID:  117.01498815561581 <br />
 Epoch 100 - <br /> -->
 
+## Examples
+
+Here is generated images at different Epoch
+
+TODO
+
+Here is an animation of reverse process that generats the image
+
+TODO
+
 ## References
 
 [Diffusion Models](https://medium.com/@monadsblog/diffusion-models-4dbe58489a2f) <br />
