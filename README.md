@@ -150,9 +150,9 @@ For training we used the [TinyImageNet][TinyImageNet] ([Download][TinyImageNet_d
 
 We trained the u-net with 4 layers (on each side of the "U") using L1 loss and batch size 64 with Adam optimizer with learning rate of 0.0002. We used a diffusion timestep of $T = 1000$ that is the same as the DDPM paper. We used the cosine variance scheduler mentioned in the [Improved DDPM][improved-DDPM_paper]. The training takes around 10 minutes per epoch on NVIDIA V100S GPU. We trained for 100 epoch for the final model. The evaluation takes around 90 second to generate a batch of 64 images.
 
-## Results and Discussion
+## Evaluation and Results
 
-We computed the [FID][FID] using the generated images against the training data. Here is what we found.
+We computed the [FID][FID] using the generated images against the training data as part of how our model performs for the purpose of evaluation. Here is what we found.
 
 | Condition  | FID score  |
 |---|---|
@@ -160,6 +160,7 @@ We computed the [FID][FID] using the generated images against the training data.
 | Epoch 20          | 195.967     |
 | Epoch 50          | 117.015     |
 | Epoch 100         | TBD     |
+
 
 The figure below shows how the Loss plateaus after the approximately 500 iterations. 
 
@@ -179,7 +180,8 @@ TODO
 
 [Diffusion Models](https://medium.com/@monadsblog/diffusion-models-4dbe58489a2f) <br />
 [EINOPS](https://github.com/arogozhnikov/einops)<br />
-[TinyImageNet Description][TinyImageNet] <br />
+
+
 
 [TinyImageNet]: https://www.kaggle.com/competitions/tiny-imagenet/overview
 [TinyImageNet_dl]: http://cs231n.stanford.edu/tiny-imagenet-200.zip
