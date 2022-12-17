@@ -14,6 +14,8 @@ $ conda activate env
 
 Authors: Yu Xin, Samartha Ramkumar
 
+The youtube link to our presentation is found [here](https://youtu.be/0Mv9eMjMYIQ).
+
 ## Abstract
 
 <!-- In the Denoising Diffusion Probabilistic model for image generation,  -->
