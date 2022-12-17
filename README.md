@@ -151,8 +151,8 @@ TODO
 ## References
 
 [Diffusion Models](https://medium.com/@monadsblog/diffusion-models-4dbe58489a2f) <br />
-[EINOPS](https://github.com/arogozhnikov/einops)
-[TinyImageNet Description][TinyImageNet]
+[EINOPS](https://github.com/arogozhnikov/einops)<br />
+[TinyImageNet Description][TinyImageNet] <br />
 
 [TinyImageNet]: https://www.kaggle.com/competitions/tiny-imagenet/overview
 [TinyImageNet_dl]: http://cs231n.stanford.edu/tiny-imagenet-200.zip
