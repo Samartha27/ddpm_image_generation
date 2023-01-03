@@ -148,7 +148,7 @@ For training we used the [TinyImageNet][TinyImageNet] ([Download][TinyImageNet_d
 
 The below evaluations are partially based on [this DDPM implementation][diffusion-impl].
 
-We trained the u-net with 4 layers (on each side of the "U") using L1 loss and batch size 64 with Adam optimizer with learning rate of 0.0002. We used a diffusion timestep of $T = 1000$ that is the same as the DDPM paper. We used the cosine variance scheduler mentioned in the [Improved DDPM][improved-DDPM_paper]. The training takes around 10 minutes per epoch on NVIDIA V100S GPU. We trained for 100 epoch for the final model. The evaluation takes around 90 second to generate a batch of 64 images.
+We trained the u-net with 4 layers (on each side of the "U") using L1 loss and batch size 64 with Adam optimizer with learning rate of 0.0002. We used a diffusion timestep of $T = 1000$ that is the same as the DDPM paper. We used the Cosine Variance scheduler mentioned in the [Improved DDPM][improved-DDPM_paper]. The training takes around 10 minutes per epoch on NVIDIA V100S GPU. We trained for 100 epoch for the final model. The evaluation takes around 90 second to generate a batch of 64 images.
 
 ## Evaluation and Results
 
