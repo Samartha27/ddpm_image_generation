@@ -43,6 +43,7 @@ To the best of our knowledge, [Denoise Diffusion Probablistic Model][DDPM_paper]
 
 ### Overview
 
+
 DDPM generates images by starting with a random noise and iteratively reducing the noise by applying a denoising neural network. More specifically, it defines a Markov Chain with denoising process (via neural network with parameter $\theta$) $p_\theta(x_{t-1} | x_t)$ and noise-adding process $q_(x_{t} | x_{t-1})$.
 
 ![denoising-diffusion](images/denoising-diffusion.png)
