@@ -21,7 +21,7 @@ The youtube link to our presentation is found here. [https://youtu.be/0Mv9eMjMYI
 <!-- In the Denoising Diffusion Probabilistic model for image generation,  -->
 
 In this project, we explored the internal of the [Denoise Diffusion Probablistic Model (DDPM)][DDPM_paper], a diffusion-based image generation model. We attempted to implement this model using pytorch. Finally,
-we trained the model on [TinyImageNet][TinyImageNet] and the results are evaluated using [FID].
+we trained the model on [TinyImageNet][TinyImageNet]which has 200 different classes and the results are evaluated using [FID] score.
 
 ## Motivation and Related Works
 
